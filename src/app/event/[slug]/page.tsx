@@ -5,7 +5,8 @@ import { notFound } from 'next/navigation';    // to show 404 page as needed
 import ShareButton from './ShareButton';
 import EventDate from './EventDate';
 import AddItemModal from './AddItemModal';
-import AddItemButton from './AddItemButton'
+import AddItemButton from './AddItemButton';
+import ClaimItemButton from './ClaimItemButton';
 
 interface PageProps {                   // Defines that this page receives URL params w/ a slug
     params: Promise<{ slug: string }>   // Change for Next.js 15: Now a Promise for asynchronous operations
@@ -116,15 +117,11 @@ export default async function EventPage({ params }: PageProps) {
                                                     )}
                                                 </div>
                                                 <div>
-                                                    {item.claimed_by ? (
-                                                        <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
-                                                            Claimed by: {item.claimed_by} ✓
-                                                        </span>
-                                                    ) : (
-                                                        <button className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm hover:bg-blue-200">
-                                                            Claim this
-                                                        </button>
-                                                    )}
+                                                    <ClaimItemButton
+                                                        itemId={item.id}
+                                                        itemName={item.name}
+                                                        currentClaimer={item.claimed_by}
+                                                    />
                                                 </div>
                                             </div>
                                         ))}
