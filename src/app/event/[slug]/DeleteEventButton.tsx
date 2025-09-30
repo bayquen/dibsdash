@@ -8,4 +8,20 @@ interface DeleteEventButtonProps {
 
 export default function DeleteEventButton({ eventSlug }: DeleteEventButtonProps) {
     const [showModal, setShowModal] = useState(false)
+
+    return (
+        <>
+            <button
+                onClick={() => setShowModal(true)}
+                className="text-sm text-red-600 hover:text-red-700"
+            >
+                Delete Event
+            </button>
+            <DeleteEventModal
+                eventSlug={eventSlug}
+                isOpen={showModal}
+                onClose={() => setShowModal(false)}
+            />
+        </>
+    )
 }
