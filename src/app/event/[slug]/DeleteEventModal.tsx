@@ -58,14 +58,17 @@ export default function DeleteEventModal({ eventSlug, isOpen, onClose }: DeleteE
 
                 <div className="flex gap-3">
                     <button
-                    
+                        onClick={onClose}
+                        className="flex-1 px-4 py-2 border rounded hover:bg-gray-50"
                     >
-
+                        Cancel
                     </button>
                     <button
-
+                        onClick={handleDelete}
+                        disabled={!canDelete || loading}
+                        className="flex-1 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        
+                        {loading ? 'Deleting...' : 'Delete'}
                     </button>
                 </div>
             </div>
