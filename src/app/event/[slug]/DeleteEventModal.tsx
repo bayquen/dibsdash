@@ -13,7 +13,7 @@ export default function DeleteEventModal({ eventSlug, isOpen, onClose }: DeleteE
     const [confirmText, setConfirmText] = useState('')    // State to confirm w/ user if they want to actually delete an event
     const [loading, setLoading] = useState(false)
 
-    const canDelete = confirmText.toUpperCase() === 'DELETE EVENT'
+    const canDelete = confirmText === 'DELETE EVENT'    // User must type phrase as is (in uppercase) to delete.
 
     const handleDelete = async () => {
         if (!canDelete) return

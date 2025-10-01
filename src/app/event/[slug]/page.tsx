@@ -7,6 +7,7 @@ import EventDate from './EventDate';
 import AddItemModal from './AddItemModal';
 import AddItemButton from './AddItemButton';
 import ClaimItemButton from './ClaimItemButton';
+import DeleteEventButton from './DeleteEventButton';
 
 interface PageProps {                   // Defines that this page receives URL params w/ a slug
     params: Promise<{ slug: string }>   // Change for Next.js 15: Now a Promise for asynchronous operations
@@ -130,6 +131,9 @@ export default async function EventPage({ params }: PageProps) {
                             ))}
                         </div>
                     )}
+                </div>
+                <div className="mt-8 text-center">
+                    <DeleteEventButton eventSlug={event.url_slug} />
                 </div>
             </div>
         </div>
