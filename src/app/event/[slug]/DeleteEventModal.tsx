@@ -45,7 +45,7 @@ export default function DeleteEventModal({ eventSlug, isOpen, onClose }: DeleteE
                 </p>
 
                 <p className="text-sm text-gray-600 mb-3">
-                    Type <span className="font-bold">DELETE EVENT</span> to confirm:
+                    Type <span className="font-bold">"DELETE EVENT"</span> to confirm:
                 </p>
 
                 <input
