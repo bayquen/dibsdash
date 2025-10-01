@@ -7,7 +7,7 @@ interface DeleteEventModalProps {
     isOpen: boolean
     onClose: () => void
 }
-// TODO: Continue Feature Step 2: Create Delete Event Modal Component (see guidance)
+
 export default function DeleteEventModal({ eventSlug, isOpen, onClose }: DeleteEventModalProps) {
     const router = useRouter()
     const [confirmText, setConfirmText] = useState('')    // State to confirm w/ user if they want to actually delete an event
@@ -27,7 +27,7 @@ export default function DeleteEventModal({ eventSlug, isOpen, onClose }: DeleteE
             if (response.ok) {
                 router.push('/')    // Redirect user back to home page if deletion succeeds
             }
-        // // TODO!: Check my dev server if there's a proper error message for the client (user side) in case deletion fails.
+
         } catch (error) {
             console.error("Error deleting event:", error)
             setLoading(false)
