@@ -8,6 +8,7 @@ import AddItemModal from './AddItemModal';
 import AddItemButton from './AddItemButton';
 import ClaimItemButton from './ClaimItemButton';
 import DeleteEventButton from './DeleteEventButton';
+import DeleteItemButton from './DeleteItemButton';
 
 interface PageProps {                   // Defines that this page receives URL params w/ a slug
     params: Promise<{ slug: string }>   // Change for Next.js 15: Now a Promise for asynchronous operations
@@ -122,6 +123,10 @@ export default async function EventPage({ params }: PageProps) {
                                                         itemId={item.id}
                                                         itemName={item.name}
                                                         currentClaimer={item.claimed_by}
+                                                    />
+                                                    <DeleteItemButton
+                                                        itemId={item.id}
+                                                        itemName={item.name}
                                                     />
                                                 </div>
                                             </div>
