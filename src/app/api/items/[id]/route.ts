@@ -5,6 +5,7 @@ interface RouteParams {
     params: Promise<{ id: string }>
 }
 
+// For claiming an existing item (partial updating of Supabase DB, hence a PATCH request instead of UPDATE)
 export async function PATCH(request: Request, { params }: RouteParams) {
     try {
         const { id } = await params
@@ -21,6 +22,28 @@ export async function PATCH(request: Request, { params }: RouteParams) {
 
         return NextResponse.json({ success: true, data })
         
+    } catch (error: any) {
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 400 }
+        )
+    }
+}
+
+// For deleting an existing item by accessing Supabase DB (hence DELETE request)
+export async function DELETE(request: Request, { params }: RouteParams) {
+    try {
+        const { id } = await params
+
+        const { error } = await supabase
+            .from('items')
+            .delete()
+            .eq('id', id)
+
+        if (error) throw error
+
+        return NextResponse.json({ success: true })
+
     } catch (error: any) {
         return NextResponse.json(
             { success: false, error: error.message },
