@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from  'next/navigation';
-
 interface AddItemModalProps {
     eventId: string
     isOpen: boolean
@@ -152,12 +151,30 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
 
                     {/* Buttons */}
                     <div className="flex gap-3">
+                        {/* Add Item */}
                         <button
                             type="submit"
                             disabled={loading || !formData.name || !formData.category}
                             className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {loading ? 'Adding...' : 'Add Item'}
+                        </button>
+                        {/* Cancel */}
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setFormData({
+                                    name: '',
+                                    category: '',
+                                    quantity: '1',
+                                    notes: '',
+                                    claimed_by: ''
+                                })
+                                onClose()
+                            }}
+                            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                        >
+                           Cancel 
                         </button>
                     </div>
                 </form>
