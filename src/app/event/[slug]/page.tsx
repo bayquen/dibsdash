@@ -9,6 +9,7 @@ import AddItemButton from './AddItemButton';
 import ClaimItemButton from './ClaimItemButton';
 import DeleteEventButton from './DeleteEventButton';
 import DeleteItemButton from './DeleteItemButton';
+import EditEventButton from './EditEventButton';
 
 interface PageProps {                   // Defines that this page receives URL params w/ a slug
     params: Promise<{ slug: string }>   // Change for Next.js 15: Now a Promise for asynchronous operations
@@ -65,7 +66,7 @@ export default async function EventPage({ params }: PageProps) {
                             <span>{event.location}</span>
                         </div>
                     )}
-                </div>
+                    </div>
 
                     {/* SECTION: Share Link (YAYYY) */}
                     <div className="mt-6 p-4 bg-blue-50 rounded-lg">
