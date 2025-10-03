@@ -25,3 +25,32 @@ export async function DELETE(request: Request, { params }: RouteParams) {
         )
     }
 }
+
+export async function PATCH(request: Request, { params }: RouteParams) {
+    try {
+        const { slug } = await params
+        const body = await request.json()
+
+        const { data, error } = await supabase
+            .from('events')
+            .update({
+            name: body.name,
+            description: body.description,
+            date: body.date,
+            time: body.time,
+            location: body.location
+            })
+            .eq('url_slug', slug)
+            .select()
+            .single()
+
+        if (error) throw error
+        
+        return NextResponse.json({ success: true, data })
+    } catch (error: any) {
+        return NextResponse.json(
+            { success: false, error: error.message },
+            { status: 400 }
+        )
+    }
+}
