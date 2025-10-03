@@ -35,7 +35,7 @@ export default function CreateEventPage() {
         // Redirect back to the event page
         router.push(`/event/${result.data.url_slug}`)
       } else {
-        alert('Error creating evnet: ' + result.error)
+        alert('Error creating event: ' + result.error)
       }
     } catch (error) {
       alert('Error: ' + error.message)
