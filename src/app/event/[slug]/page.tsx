@@ -80,6 +80,11 @@ export default async function EventPage({ params }: PageProps) {
                             <ShareButton url={`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/event/${event.url_slug}`} />          
                         </div>
                     </div>
+
+                    <div>
+                        {/* Button to open modal for editing event details hehe */}
+                        <EditEventButton event={event} />
+                    </div>
                 </div>
                 
                 {/* SECTION: Items (YAYYY)*/}
