@@ -24,11 +24,24 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
         setLoading(true)
 
         try {
-            
-        } catch {
+            const response = await fetch(`/api/events/${event.url_slug}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type' : 'application/json' },
+                body: JSON.stringify(formData)
+            })
 
+            const result = await response.json()
+
+            if (result.success) {
+                router.refresh()
+                onClose()
+            } else {
+                alert('Error updating event: ' + result.error)
+            }
+        } catch (error: any) {
+            alert('Error: ' + error.message)
         } finally {
-            
+            setLoading(false)
         }
     }
 }
