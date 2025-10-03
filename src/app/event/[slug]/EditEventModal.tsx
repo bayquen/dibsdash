@@ -18,4 +18,17 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
         time: event.time || '',
         location: event.location || ''
     })
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setLoading(true)
+
+        try {
+            
+        } catch {
+
+        } finally {
+            
+        }
+    }
 }
