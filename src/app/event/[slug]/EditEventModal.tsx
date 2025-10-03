@@ -100,6 +100,49 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
                         />
                     </div>
 
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Time
+                        </label>
+                        <input
+                            name="time"
+                            type="time"
+                            value={formData.time}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    <div className="mb-6">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Location
+                        </label>
+                        <input
+                            name="location"
+                            type="text"
+                            value={formData.location}
+                            onChange={handleChange}
+                            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    <div className="flex gap-3">
+                        <button
+                            type="submit"
+                            disabled={loading || !(formData.name)}
+                            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                        >
+                            {loading ? 'Saving...' : 'Save Changes'}
+                        </button>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                        >
+                            Cancel
+                        </button> 
+                    </div>
+                    
                 </form>
             </div>
         </div>
