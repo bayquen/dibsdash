@@ -19,7 +19,8 @@ function generateSlug(): string {
 }
 
 // Brandon's TODO: (AFTER MVP in production?) - For a given event, match first two generated words for
-//      main URL slug name match w/ HOST URL slug (e.g. "event/vibey-cat..." for both URLs). Reason: for consistency.
+//                 main URL slug name match w/ HOST URL slug (e.g. "event/vibey-cat..." for both URLs). 
+//                 Reason: for consistency.
 function generateEditCode(): string {
   const secureUnique = nanoid(20)    // Longer slug = more secure for host event-editing access
   // Return concatenated URL slug for event-host editing link
