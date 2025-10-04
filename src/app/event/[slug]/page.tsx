@@ -124,11 +124,13 @@ export default async function EventPage({ params }: PageProps) {
                                                     )}
                                                 </div>
                                                 <div>
+                                                    {/* Button to claim an item w/ user's name */}
                                                     <ClaimItemButton
                                                         itemId={item.id}
                                                         itemName={item.name}
                                                         currentClaimer={item.claimed_by}
                                                     />
+                                                    {/* Button to delete an item */}
                                                     <DeleteItemButton
                                                         itemId={item.id}
                                                         itemName={item.name}
