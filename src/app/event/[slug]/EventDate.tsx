@@ -6,14 +6,20 @@ interface EventDateProps {
 }
 
 export default function EventDate({ date, time }: EventDateProps) {
-    if (!date) return null
+    if (!date && !time) return null
 
-    const eventDate = new Date(date).toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    })
+    let eventDate = null
+        if (date) {
+        const [year, month, day] = date.split('-')
+        const dateObj = new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
+
+        eventDate = dateObj.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        })
+    }
 
     let formattedTime = null
     if (time) {
