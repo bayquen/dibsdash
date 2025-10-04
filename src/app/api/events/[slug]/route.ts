@@ -35,10 +35,10 @@ export async function PATCH(request: Request, { params }: RouteParams) {
             .from('events')
             .update({
             name: body.name,
-            description: body.description,
-            date: body.date,
-            time: body.time,
-            location: body.location
+            description: body.description || null,
+            date: body.date || null,
+            time: body.time || null,
+            location: body.location || null
             })
             .eq('url_slug', slug)
             .select()
