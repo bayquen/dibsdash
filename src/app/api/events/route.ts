@@ -1,6 +1,6 @@
-import { supabase } from '@/lib/supabase';          // For user-created Events database
+import { supabase } from '@/lib/supabase';    // For user-created Events database
 import { NextResponse } from 'next/server';
-import { customAlphabet } from 'nanoid';    // NanoID package is for production-grade unique string ID generation!
+import { customAlphabet } from 'nanoid';      // NanoID package is for production-grade unique string ID generation!
 
 
 // Generate unique URL slug upon creation of an event
