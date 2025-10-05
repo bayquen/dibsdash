@@ -8,6 +8,7 @@ import ClaimItemButton from './ClaimItemButton';
 import DeleteEventButton from './DeleteEventButton';
 import DeleteItemButton from './DeleteItemButton';
 import EditEventButton from './EditEventButton';
+import EditItemButton from './EditItemButton';
 
 interface PageProps {                   // Defines that this page receives URL params w/ a slug
     params: Promise<{ slug: string }>   // Change for Next.js 15: Now a Promise for asynchronous operations
