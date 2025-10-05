@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from  'next/navigation';
+import { ITEM_CATEGORIES } from '@/constants/itemCategories';
+
 interface AddItemModalProps {
     eventId: string
     isOpen: boolean
