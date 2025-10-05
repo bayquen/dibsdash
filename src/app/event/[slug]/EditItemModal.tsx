@@ -14,3 +14,7 @@ interface EditItemModalProps {
     isOpen: boolean
     onClose: () => void
 }
+
+export default function EditItemModal({ item, isOpen, onClose }: EditItemModalProps) {
+    const router = useRouter()
+}
