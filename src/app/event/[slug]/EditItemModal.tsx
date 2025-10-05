@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-
+// TODO IMMED: Review code buddy's analysis and refactored solution suggestion for EditItemModal categories. Should I go for that solution instead?
 interface EditItemModalProps {
     item: {
         id: string
@@ -25,4 +25,9 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         notes: item.notes || '',
         claimed_by: item.claimed_by || ''
     })
+
+    // Preset item categories
+    const itemCategories = [
+
+    ]
 }
