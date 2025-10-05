@@ -69,6 +69,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
         }
     }
 
+    // Don't render anything if modal is closed
     if (!isOpen) return null
 
     return (
@@ -153,7 +154,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
 
                     {/* Buttons */}
                     <div className="flex gap-3">
-                        {/* Add Item */}
+                        {/* Add Item button */}
                         <button
                             type="submit"
                             disabled={loading || !formData.name || !formData.category}
@@ -161,7 +162,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                         >
                             {loading ? 'Adding...' : 'Add Item'}
                         </button>
-                        {/* Cancel */}
+                        {/* Cancel button */}
                         <button
                             type="button"
                             onClick={() => {

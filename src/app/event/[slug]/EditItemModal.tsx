@@ -51,11 +51,119 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
             } else {
                 alert('Error updating item: ' + result.error)
             }
-        } catch {
-            
+        } catch (error: any) {
+            alert('Error: ' + error.message)
         } finally {
-
+            setLoading(false)
         }
     }
 
+    // Don't render anything if modal is closed
+    if (!isOpen) return null
+
+    
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-lg max-w-md w-full p-6">
+                <h2 className="text-2xl font-bold mb-4">Edit Item</h2>
+
+                <form onSubmit={handleSubmit}>
+                    {/* Item Name */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Item Name *
+                        </label>
+                        <input
+                            type="text"
+                            required
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value})}
+                            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Item Category */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Category *
+                        </label>
+                        <select
+                            required
+                            value={formData.category}
+                            onChange={(e) => setFormData({ ...formData, category: e.target.value})}
+                            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+                            <option value="">Select item category...</option>
+                            {ITEM_CATEGORIES.map(cat => (
+                                <option key={cat} value={cat}>{cat}</option>
+                            ))}
+                                <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    {/* Item Quantity */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Quantity
+                        </label>
+                        <input
+                            type="number"
+                            min="1"
+                            value={formData.quantity}
+                            onChange={(e) => setFormData({...formData, quantity: e.target.value})}
+                            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+
+                    {/* Person's Name (if claiming item hehe) */}
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Your Name (if claiming or bringing an item)
+                        </label>
+                        <input
+                            type="text"
+                            value={formData.claimed_by}
+                            onChange={(e) => setFormData({...formData, claimed_by: e.target.value})}
+                            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                    </div>
+                    
+                    {/* Item Notes */}
+                    <div className="mb-6">
+                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                            Notes
+                        </label>
+                        <textarea
+                            value={formData.notes}
+                            onChange={(e) => setFormData({...formData, notes: e.target.value})}
+                            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            rows={3}
+                            placeholder="Any specific details or notes for this item..."
+                        />
+                    </div>
+                    
+                    {/* Buttons */}
+                    <div className="flex gap-3">
+                        {/* Save Changes button */}
+                        <button
+                            type="submit"
+                            disabled={loading || !formData.name || !formData.category}
+                            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            { loading ? 'Saving...' : 'Save Changes'}
+                        </button>
+                        {/* Cancel button */}
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    )
 }
