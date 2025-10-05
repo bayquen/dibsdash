@@ -13,7 +13,7 @@ export async function PATCH(request: Request, { params }: RouteParams) {
 
         // For building the Update object dynamically. Only includes the item fields that were provided
         const updateData: any = {}
-        
+
         if (body.claimed_by !== undefined) updateData.claimed_by = body.claimed_by
         if (body.name !== undefined) updateData.name = body.name
         if (body.category !== undefined) updateData.category = body.category
@@ -22,7 +22,7 @@ export async function PATCH(request: Request, { params }: RouteParams) {
 
         const { data, error } = await supabase
             .from('items')
-            .update({ claimed_by: body.claimed_by })
+            .update(updateData)
             .eq('id', id)
             .select()
             .single()
