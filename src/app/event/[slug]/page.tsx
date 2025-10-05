@@ -1,4 +1,3 @@
-// 'use client';
 import { supabase } from '@/lib/supabase';
 import { notFound } from 'next/navigation';    // to show 404 page as needed
 import ShareButton from './ShareButton';
