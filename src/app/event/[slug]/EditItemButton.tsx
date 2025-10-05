@@ -13,3 +13,20 @@ interface EditItemButtonProps {
         claimed_by: string | null
     }
 }
+
+export default function EditItemButton({ item }: EditItemButtonProps) {
+    // State for tracking whether modal is open or closed
+    const [isOpen, setIsOpen] = useState(false)
+
+    return (
+        <>
+            {/* Button that opens edit modal */}
+            <button
+                onClick={() => setIsOpen(true)}
+                className="px-3 py-1 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+            >
+                Edit Item
+            </button>
+        </>
+    )
+}
