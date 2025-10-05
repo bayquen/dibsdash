@@ -1,7 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-// TODO IMMED: Review code buddy's analysis and refactored solution suggestion for EditItemModal categories. Should I go for that solution instead?
+// DRY principle: Used a constant here to avoid duplication of categories
+// between Item modals (i.e. adding and editing)
+import { ITEM_CATEGORIES } from '@/constants/itemCategories';
+
 interface EditItemModalProps {
     item: {
         id: string
@@ -26,8 +29,11 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         claimed_by: item.claimed_by || ''
     })
 
-    // Preset item categories
-    const itemCategories = [
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        setLoading(true)
 
-    ]
+        // Continue buildin function...
+    }
+
 }
