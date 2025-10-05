@@ -19,8 +19,8 @@ export default function AddItemButton({ eventId }: AddItemButtonProps) {
             </button>
             <AddItemModal
                 eventId={eventId}
-                isOpen={showModal}
-                onClose={() => setShowModal(false)}
+                isOpen={showModal}                   // Control modal visibility
+                onClose={() => setShowModal(false)}  // Close modal when user cancels
             />
         </>
     )

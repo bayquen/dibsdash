@@ -27,6 +27,11 @@ export default function EditItemButton({ item }: EditItemButtonProps) {
             >
                 Edit Item
             </button>
+            <EditItemModal
+                item={item}
+                isOpen={isOpen}                   // Control modal visibility
+                onClose={() => setIsOpen(false)}  // Close modal when user cancels
+            />
         </>
     )
 }
