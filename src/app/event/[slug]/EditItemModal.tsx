@@ -24,7 +24,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
     const [formData, setFormData] = useState({
         name: item.name,
         category: item.category,
-        quantity: item.quantity,
+        quantity: item.quantity.toString(),
         notes: item.notes || '',
         claimed_by: item.claimed_by || ''
     })
@@ -33,7 +33,29 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         e.preventDefault()
         setLoading(true)
 
-        // Continue buildin function...
+        try {
+            const response = await fetch(`/api/items/${item.id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type' : 'application/json'},
+                body: JSON.stringify({
+                    ...formData,
+                    quantity: parseInt(formData.quantity)   // Convert str input --> num since DB expects num
+                })
+            })
+
+            const result = await response.json()
+
+            if (result.success) {
+                router.refresh()
+                onClose()
+            } else {
+                alert('Error updating item: ' + result.error)
+            }
+        } catch {
+            
+        } finally {
+
+        }
     }
 
 }
