@@ -17,4 +17,12 @@ interface EditItemModalProps {
 
 export default function EditItemModal({ item, isOpen, onClose }: EditItemModalProps) {
     const router = useRouter()
+    const [loading, setLoading] = useState(false)
+    const [formData, setFormData] = useState({
+        name: item.name,
+        category: item.category,
+        quantity: item.quantity,
+        notes: item.notes || '',
+        claimed_by: item.claimed_by || ''
+    })
 }
