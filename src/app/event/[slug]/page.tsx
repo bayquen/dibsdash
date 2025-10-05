@@ -1,7 +1,6 @@
 // 'use client';
 import { supabase } from '@/lib/supabase';
 import { notFound } from 'next/navigation';    // to show 404 page as needed
-// import { useState } from 'react';
 import ShareButton from './ShareButton';
 import EventDate from './EventDate';
 import AddItemModal from './AddItemModal';
