@@ -123,6 +123,9 @@ export default async function EventPage({ params }: PageProps) {
                                                     )}
                                                 </div>
                                                 <div>
+                                                    {/* Button to edit existing item */}
+                                                    <EditItemButton item={item}/>
+
                                                     {/* Button to claim an item w/ user's name */}
                                                     <ClaimItemButton
                                                         itemId={item.id}

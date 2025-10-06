@@ -118,7 +118,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                     {/* Person's Name (if claiming item hehe) */}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Your Name (if claiming or bringing an item)
+                            Your Name (if claiming item)
                         </label>
                         <input
                             type="text"

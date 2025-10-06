@@ -1,7 +1,8 @@
 'use client';
-
 import { useState } from 'react';
 import { useRouter } from  'next/navigation';
+// DRY principle: Used a constant here to avoid duplication of categories
+// between Item modals (i.e. adding and editing)
 import { ITEM_CATEGORIES } from '@/constants/itemCategories';
 
 interface AddItemModalProps {
@@ -20,17 +21,6 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
         notes: '',
         claimed_by: ''
     })
-
-    // // Preset item categories
-    // const itemCategories = [
-    //     'Food',
-    //     'Drinks',
-    //     'Supplies',
-    //     'Decorations',
-    //     'Equipment',
-    //     'Electronics',
-    //     'Services'
-    // ]
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -128,7 +118,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                     {/* Person's Name (if claiming item) */}
                     <div className="mb-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
-                        Your Name (if claiming or bringing item)
+                        Your Name (if claiming item)
                     </label>
                     <input
                         type="text"
