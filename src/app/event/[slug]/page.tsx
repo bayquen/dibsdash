@@ -29,7 +29,7 @@ async function getEvent(slug: string) {
         .from('items')               // Look in 'items' table
         .select('*')
         .eq('event_id', event.id)    // WHERE event_id matches this event
-        .order('category')           // Sort by category (e.g. Food, Drinks, Decor, etc.)
+        .order('category')           // Sort by category, alphabetically (e.g. Decor, Drinks, Food, etc.)
         .order('created_at')         // Then by creation time
 
     return { ...event, items: items || [] }    // Combine event + items into one object 
