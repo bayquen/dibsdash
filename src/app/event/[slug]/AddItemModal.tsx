@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRouter } from  'next/navigation';
 // DRY principle: Used a constant here to avoid duplication of categories
 // between Item modals (i.e. adding and editing)
-import { ITEM_CATEGORIES } from '@/constants/itemCategories';
+import { ITEM_CATEGORIES, normalizeCategoryName } from '@/constants/itemCategories';
 
 interface AddItemModalProps {
     eventId: string
