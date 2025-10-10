@@ -1,9 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 // DRY principle: Used a constant here to avoid duplication of categories
 // between Item modals (i.e. adding and editing)
-import { ITEM_CATEGORIES } from '@/constants/itemCategories';
+import { ITEM_CATEGORIES, normalizeCategoryName } from '@/constants/itemCategories';
 
 interface EditItemModalProps {
     item: {
@@ -28,6 +28,10 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         notes: item.notes || '',
         claimed_by: item.claimed_by || ''
     })
+
+    // State custom item category input, yuhhh!
+    const [showCustomInput, setShowCustomInput] = useState(false)
+    const [customCategoryName, setCustomCategoryName] = useState('')
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
