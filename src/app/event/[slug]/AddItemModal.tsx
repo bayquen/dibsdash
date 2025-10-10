@@ -22,9 +22,35 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
         claimed_by: ''
     })
 
+    // State for custom item-category user input yayyy!
+    const [showCustomInput, setShowCustomInput] = useState(false)
+    const [customCategoryName, setCustomCategoryName] = useState('')
+
+    // Handle item category dropdown changes
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = e.target.value
+        
+        // When user chooses a custom category
+        if (value === '__custom__') {
+            setShowCustomInput(true)
+            setFormData({...formData, category: ''})
+        // When user chooses a preset category
+        } else {
+            setShowCustomInput(false)
+            setCustomCategoryName('')
+            setFormData({...formData, category: value})
+        }
+    }
+
+    // Determine final category: use custom if provided, or else use a dropdown!!
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
+
+        let finalCategory = formData.category 
+        if (showCustomInput) {
+            finalCategory = normalizeCategoryName(customCategoryName)
+        }
 
         try {
             const response = await fetch('/api/items/', {
@@ -33,6 +59,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                 body: JSON.stringify({
                     event_id: eventId,
                     ...formData,
+                    category: finalCategory,                 // Use the finalized category
                     quantity: parseInt(formData.quantity)    // Convert str input --> num since DB expects num
                 })
             })
@@ -49,6 +76,8 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                     notes: '',
                     claimed_by: ''
                 })
+                setShowCustomInput(false)
+                setCustomCategoryName('')
             } else {
                 alert('Error adding item: ' + result.error)
             }
@@ -89,18 +118,39 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                             Category *
                         </label>
                         <select
-                            value={formData.category}
-                            onChange={(e) => setFormData({...formData, category: e.target.value})}
+                            value={showCustomInput ? '__custom__' : formData.category}
+                            onChange={handleCategoryChange}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="">Select item category...</option>
                             {ITEM_CATEGORIES.map(cat => (
                                 <option key={cat} value={cat}>{cat}</option>
                             ))}
-                            <option value="Other">Other</option>
+                            <option value="__custom__">+ Add a custom category</option>
                         </select>
                     </div>
 
+                    {/* Custom Category Input (appears when custom is selected) */}
+                    {showCustomInput && (
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                                Custom Category Name *
+                            </label>
+                            <input
+                                type="text"
+                                required
+                                value={customCategoryName}
+                                onChange={(e) => setCustomCategoryName(e.target.value)}
+                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="e.g. Gifts"
+                                maxLength={40}
+                            />
+                            <p className="text-xs text-gray-500 mt-1">
+                                {customCategoryName.length}/40 characters
+                            </p>
+                        </div>
+                    )}
+                        
                     {/* Item Quantity */}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -125,7 +175,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                         value={formData.claimed_by}
                         onChange={(e) => setFormData({...formData, claimed_by: e.target.value})}
                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder=""
+                        placeholder="(Optional)"
                     />
                     </div>
                     {/* Item Notes */}
@@ -139,7 +189,11 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             rows={3}
                             placeholder="Any specific details or notes for this item..."
+                            maxLength={300}
                         />
+                        <p className="text-xs text-gray-500 mt-1">
+                            {formData.notes.length}/300 characters
+                        </p>
                     </div>
 
                     {/* Buttons */}
@@ -147,7 +201,11 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                         {/* Add Item button */}
                         <button
                             type="submit"
-                            disabled={loading || !formData.name || !formData.category}
+                            disabled={
+                                loading || 
+                                !formData.name || 
+                                (!formData.category && !customCategoryName.trim())
+                            }
                             className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {loading ? 'Adding...' : 'Add Item'}
@@ -163,6 +221,8 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                                     notes: '',
                                     claimed_by: ''
                                 })
+                                setShowCustomInput(false)
+                                setCustomCategoryName('')
                                 onClose()
                             }}
                             className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"

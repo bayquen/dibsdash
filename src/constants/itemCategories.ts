@@ -20,7 +20,7 @@ export function normalizeCategoryName(category: string): string {
         .toLowerCase()      // Convert to lowercase first,
         .split(' ')         // then split into words
         .map(word =>
-            word.charAt(0).toUpperCase + word.slice(1)  // Capitalize first letter for each word
+            word.charAt(0).toUpperCase() + word.slice(1)  // Capitalize first letter for each word
         )
         .join(' ')          // Join back with spaces
 }
