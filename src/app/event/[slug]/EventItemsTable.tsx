@@ -12,6 +12,16 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
     // State to track which categories are collapsed (default: all expanded)
     const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set())
 
-    
+    const toggleCategory = (category: string) => {
+        setCollapsedCategories(prev => {
+            const newSet = new Set(prev)
+            if (newSet.has(category)) {
+                newSet.delete(category)
+            } else {
+                newSet.add(category)
+            }
+            return newSet
+        })
+    }
 
 }
