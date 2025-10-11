@@ -42,7 +42,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
         }
     }
 
-    // Determine final category: use custom if provided, or else use a dropdown!!
+    // Determine final category: use custom if provided, otherwise use dropdown!!
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
@@ -187,7 +187,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                             value={formData.notes}
                             onChange={(e) => setFormData({...formData, notes: e.target.value})}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            rows={3}
+                            rows={4}
                             placeholder="Any specific details or notes for this item..."
                             maxLength={300}
                         />

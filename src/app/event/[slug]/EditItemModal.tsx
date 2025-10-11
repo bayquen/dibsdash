@@ -33,9 +33,37 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
     const [showCustomInput, setShowCustomInput] = useState(false)
     const [customCategoryName, setCustomCategoryName] = useState('')
 
+    // Check if the item's category is custom (i.e. not in preset list!)
+    useEffect(() => {
+        if (!ITEM_CATEGORIES.includes(item.category as any)) {
+            // This is a custom category
+            setShowCustomInput(true)
+            setCustomCategoryName(item.category)
+            setFormData(prev => ({...prev, category: ''}))
+        }
+    }, [item.category])
+
+    // Handle item category dropdown changes
+    const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = e.target.value
+        
+        if (value === '__custom__') {
+            // User selected a preset category
+            setShowCustomInput(true)
+            setCustomCategoryName('')
+            setFormData({...formData, category: value})
+        }
+    }
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
+
+        // Determine final category: use custom if provided, otherwise use dropdown!
+        let finalCategory = formData.category 
+        if (showCustomInput) {
+            finalCategory = normalizeCategoryName(customCategoryName)
+        }
 
         try {
             const response = await fetch(`/api/items/${item.id}`, {
@@ -43,7 +71,8 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                 headers: { 'Content-Type' : 'application/json'},
                 body: JSON.stringify({
                     ...formData,
-                    quantity: parseInt(formData.quantity)   // Convert str input --> num since DB expects num
+                    category: finalCategory,                 // Use normalized category
+                    quantity: parseInt(formData.quantity)    // Convert str input --> num since DB expects num
                 })
             })
 
@@ -64,7 +93,6 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
 
     // Don't render anything if modal is closed
     if (!isOpen) return null
-
     
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -93,17 +121,38 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                         </label>
                         <select
                             required
-                            value={formData.category}
-                            onChange={(e) => setFormData({ ...formData, category: e.target.value})}
+                            value={showCustomInput ? '__custom__' : formData.category}
+                            onChange={handleCategoryChange}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="">Select item category...</option>
                             {ITEM_CATEGORIES.map(cat => (
                                 <option key={cat} value={cat}>{cat}</option>
                             ))}
-                                <option value="Other">Other</option>
+                                <option value="__custom__">+ Add a custom category</option>
                         </select>
                     </div>
+
+                    {/* Custom Category Input (appears when custom is selected) */}
+                    {showCustomInput && (
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                                Custom Category Name *
+                            </label>
+                            <input
+                                type="text"
+                                required
+                                value={customCategoryName}
+                                onChange={(e) => setCustomCategoryName(e.target.value)}
+                                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="e.g. Gifts"
+                                maxLength={40}
+                            />
+                            <p className="text-xs text-gray-500 mt-1">
+                                {customCategoryName.length}/40 characters
+                            </p>
+                        </div>
+                    )}
 
                     {/* Item Quantity */}
                     <div className="mb-4">
@@ -129,6 +178,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                             value={formData.claimed_by}
                             onChange={(e) => setFormData({...formData, claimed_by: e.target.value})}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="(Optional)"
                         />
                     </div>
                     
@@ -141,9 +191,13 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                             value={formData.notes}
                             onChange={(e) => setFormData({...formData, notes: e.target.value})}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            rows={3}
+                            rows={4}
                             placeholder="Any specific details or notes for this item..."
+                            maxLength={300}
                         />
+                        <p>
+                            {formData.notes.length}/300 characters
+                        </p>
                     </div>
                     
                     {/* Buttons */}
@@ -151,7 +205,9 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                         {/* Save Changes button */}
                         <button
                             type="submit"
-                            disabled={loading || !formData.name || !formData.category}
+                            disabled={loading || 
+                                !formData.name || 
+                                !formData.category && !customCategoryName.trim()}
                             className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             { loading ? 'Saving...' : 'Save Changes'}
