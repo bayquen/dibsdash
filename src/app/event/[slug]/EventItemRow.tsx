@@ -54,6 +54,18 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                         currentClaimer={item.claimed_by}
                     />
                 </td>
+
+                {/* User Actions Column */}
+                <td>
+                    <div>
+                        <EditItemButton item={item} />
+                        <DeleteItemButton
+                            itemId={item.id}
+                            itemName={item.name} 
+                        />
+                    </div>
+                </td>
+                
             </tr>
         </>
     )
