@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import ClaimItemButton from './ClaimItemButton';
 import EditItemButton from './EditItemButton';
@@ -78,7 +77,7 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                     </td>
                 </tr>
             )}
-            
+
         </>
     )
 }
