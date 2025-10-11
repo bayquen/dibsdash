@@ -2,13 +2,16 @@
 import { useState } from 'react';
 import EventItemRow from './EventItemRow';
 
-interface EventItemTableProps {
+interface EventItemsTableProps {
     categorizedItems: {
         [category: string]: any[]
     }
 }
 
-export default function EventItemTable({ categorizedItems }: EventItemTableProps) {
+export default function EventItemsTable({ categorizedItems }: EventItemsTableProps) {
     // State to track which categories are collapsed (default: all expanded)
     const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set())
+
+    
+
 }
