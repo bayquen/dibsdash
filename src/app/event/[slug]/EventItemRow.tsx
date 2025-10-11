@@ -15,3 +15,12 @@ interface EventItemRowProps {
         claimed_by: string | null
     }
 }
+
+export default function EventItemRow({ item }: EventItemRowProps) {
+    // State to track if notes are expanded for this item
+    const [notesExpanded, setNotesExpanded] = useState(false)
+
+    return (
+        
+    )
+}
