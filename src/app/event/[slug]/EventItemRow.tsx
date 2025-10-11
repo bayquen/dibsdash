@@ -40,7 +40,11 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                         )}
                     </div>
                 </td>
-
+                
+                {/* Quantity Column */}
+                <td className="px-4 py-3 text-center">
+                    {item.quantity > 1 ? `${item.quantity}` : '1'}
+                </td>
             </tr>
         </>
     )
