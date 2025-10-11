@@ -65,8 +65,20 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                         />
                     </div>
                 </td>
-                
             </tr>
+        
+            {/* Expanded item notes row (appears only when notesExpanded=true) */}
+            {notesExpanded && item.notes && (
+                <tr className="bg-blue-50">
+                    <td colSpan={4} className="px-4 py-3">
+                        <div className="flex items-start gap-2">
+                            <span className="text-gray-600 font-semibold">Notes: </span>
+                            <span className="text-gray-700">{item.notes}</span>
+                        </div>
+                    </td>
+                </tr>
+            )}
+            
         </>
     )
 }
