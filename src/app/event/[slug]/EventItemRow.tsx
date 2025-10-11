@@ -45,6 +45,15 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                 <td className="px-4 py-3 text-center">
                     {item.quantity > 1 ? `${item.quantity}` : '1'}
                 </td>
+
+                {/* "Claimed by" Column */}
+                <td className="px-4 py-3">
+                    <ClaimItemButton
+                        itemId={item.id}
+                        itemName={item.name}
+                        currentClaimer={item.claimed_by}
+                    />
+                </td>
             </tr>
         </>
     )
