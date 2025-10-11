@@ -54,6 +54,32 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
                             </div>
                         </button>
 
+                        {/* Category Table (hidden when collapsed) */}
+                        {!isCollapsed && (
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>
+
+                                            </th>
+                                            <th>
+
+                                            </th>
+                                            <th>
+
+                                            </th>
+                                            <th>
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
                     </div>
                 )
         })}
