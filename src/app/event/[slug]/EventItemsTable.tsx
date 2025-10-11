@@ -56,20 +56,20 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
 
                         {/* Category Table (hidden when collapsed) */}
                         {!isCollapsed && (
-                            <div>
-                                <table>
-                                    <thead>
+                            <div className="overflow-x-auto">
+                                <table className="w-full">
+                                    <thead className="bg-gray-50">
                                         <tr>
-                                            <th>
+                                            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
                                                 Item
                                             </th>
-                                            <th>
+                                            <th className="px-4 py-2 text-center text-sm font-semibold text-gray-700">
                                                 Quantity
                                             </th>
-                                            <th>
+                                            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
                                                 Claimed By
                                             </th>
-                                            <th>
+                                            <th className="px-4 py-2 text-right text-sm font-semibold text-gray-700">
                                                 Actions
                                             </th>
                                         </tr>
