@@ -61,21 +61,23 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
                                     <thead>
                                         <tr>
                                             <th>
-
+                                                Item
                                             </th>
                                             <th>
-
+                                                Quantity
                                             </th>
                                             <th>
-
+                                                Claimed By
                                             </th>
                                             <th>
-
+                                                Actions
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        {categoryItems.map((item) => (
+                                            <EventItemRow key={item.id} item={item} />
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>
