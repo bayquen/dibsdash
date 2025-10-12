@@ -9,6 +9,7 @@ import DeleteEventButton from './DeleteEventButton';
 import DeleteItemButton from './DeleteItemButton';
 import EditEventButton from './EditEventButton';
 import EditItemButton from './EditItemButton';
+import EventItemsTable from './EventItemsTable';
 
 interface PageProps {                   // Defines that this page receives URL params w/ a slug
     params: Promise<{ slug: string }>   // Change for Next.js 15: Now a Promise for asynchronous operations
@@ -43,6 +44,13 @@ export default async function EventPage({ params }: PageProps) {
     if (!event) {
         notFound()  // Trigger 404 page if event doesn't exist
     }
+
+    // Group items by category (moved from JSX to here for clarity)
+    const categorizedItems = event.items.reduce((acc: any, item: any) => {
+        if (!acc[item.category]) acc[item.category] = []
+        acc[item.category].push(item)
+        return acc
+    }, {})
 
     return (
         <div className="min-h-screen bg-gray-50 py-8 px-4">
@@ -86,7 +94,7 @@ export default async function EventPage({ params }: PageProps) {
                     </div>
                 </div>
                 
-                {/* SECTION: Items (YAYYY)*/}
+                {/* SECTION: Items (YAYYY) - NOW WITH TABLE LAYOUT */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <div className="flex justify-between items-center mb-6">
                         <h2 className="text-2xl font-bold text-gray-900">Items Needed</h2>
@@ -99,53 +107,10 @@ export default async function EventPage({ params }: PageProps) {
                             <p className="text-sm mt-2">Be the first to add what&apos;s needed for this event!</p>
                         </div>
                     ) : (
-                        <div className="space-y-4">
-                        {/* Group items by category */}
-                            {Object.entries(
-                                event.items.reduce((acc: any, item: any) => {
-                                    if (!acc[item.category]) acc[item.category] = []
-                                    acc[item.category].push(item)
-                                    return acc
-                                }, {})
-                            ).map(([category, categoryItems]: [string, any]) => (
-                                <div key={category} className="border rounded-lg p-4">
-                                    <h3 className="font-semibold text-lg mb-3 text-gray-700">{category}</h3>
-                                    <div className="space-y-2">
-                                        {categoryItems.map((item: any) => (
-                                            <div key={item.id} className="flex items-center justify-between p-3 bg-gray-50 rounded">
-                                                <div>
-                                                    <span className="font-medium">{item.name}</span>
-                                                    {item.quantity > 1 && (
-                                                        <span className="text-sm text-gray-500 ml-2"> (x{item.quantity})</span>
-                                                    )}
-                                                    {item.notes && (
-                                                        <p className="text-sm text-gray-600 mt-1">Description: {item.notes}</p>
-                                                    )}
-                                                </div>
-                                                <div>
-                                                    {/* Button to edit existing item */}
-                                                    <EditItemButton item={item}/>
-
-                                                    {/* Button to claim an item w/ user's name */}
-                                                    <ClaimItemButton
-                                                        itemId={item.id}
-                                                        itemName={item.name}
-                                                        currentClaimer={item.claimed_by}
-                                                    />
-                                                    {/* Button to delete an item */}
-                                                    <DeleteItemButton
-                                                        itemId={item.id}
-                                                        itemName={item.name}
-                                                    />
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                        <EventItemsTable categorizedItems={categorizedItems} />
                     )}
                 </div>
+
                 <div className="mt-8 text-center">
                     <DeleteEventButton eventSlug={event.url_slug} />
                 </div>
