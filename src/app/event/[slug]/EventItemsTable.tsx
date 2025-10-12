@@ -84,8 +84,8 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
                         )}
                     </div>
                 )
-        })}
+                
+            })}
         </div>
     )
-
 }
