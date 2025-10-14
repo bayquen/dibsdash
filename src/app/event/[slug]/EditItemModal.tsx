@@ -96,7 +96,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
     
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg max-w-md w-full p-6">
+            <div className="bg-white rounded-lg w-full max-w-sm sm:max-w-md lg:max-w-lg max-h-[90vh] overflow-y-auto p-4 sm:p-6 m-4">
                 <h2 className="text-2xl font-bold mb-4">Edit Item</h2>
 
                 <form onSubmit={handleSubmit}>
@@ -191,8 +191,8 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                             value={formData.notes}
                             onChange={(e) => setFormData({...formData, notes: e.target.value})}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            rows={4}
-                            placeholder="Any specific details or notes for this item..."
+                            rows={2}
+                            placeholder="Any notes or details for this item..."
                             maxLength={300}
                         />
                         <p>
