@@ -1,4 +1,7 @@
-// Run app: `pnpm run dev`
+import './globals.css';
+
+// To run app on dev server: `pnpm run dev` (or just npm)
+
 export default function RootLayout({
     children,
   }: {
