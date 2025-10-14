@@ -197,7 +197,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                         {/* Add Item button */}
                         <button
                             type="submit"
@@ -206,7 +206,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                                 !formData.name || 
                                 (!formData.category && !customCategoryName.trim())
                             }
-                            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full sm:flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {loading ? 'Adding...' : 'Add Item'}
                         </button>
@@ -225,7 +225,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                                 setCustomCategoryName('')
                                 onClose()
                             }}
-                            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                            className="w-full sm:flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
                         >
                            Cancel 
                         </button>
