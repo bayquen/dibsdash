@@ -201,14 +201,14 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                     </div>
                     
                     {/* Buttons */}
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                         {/* Save Changes button */}
                         <button
                             type="submit"
                             disabled={loading || 
                                 !formData.name || 
                                 !formData.category && !customCategoryName.trim()}
-                            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full sm:flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             { loading ? 'Saving...' : 'Save Changes'}
                         </button>
@@ -216,7 +216,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                         <button
                             type="button"
                             onClick={onClose}
-                            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                            className="w-full sm:flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
                         >
                             Cancel
                         </button>
