@@ -47,20 +47,31 @@ export default function EventItemRow({ item }: EventItemRowProps) {
 
                 {/* "Claimed by" Column */}
                 <td className="px-4 py-3">
-                    <ClaimItemButton
-                        itemId={item.id}
-                        itemName={item.name}
-                        currentClaimer={item.claimed_by}
-                    />
+                    <div className="flex flex-col sm:flex-row sm:items-center">
+                        <ClaimItemButton
+                            itemId={item.id}
+                            itemName={item.name}
+                            currentClaimer={item.claimed_by}
+                        />
+                    </div>
                 </td>
 
                 {/* User Actions Column */}
-                <td>
-                    <div>
+                <td className="px-4 py-3">
+                    {/* Desktop: horizontal layout */}
+                    <div className="hidden sm:flex gap-2 justify-end">
                         <EditItemButton item={item} />
                         <DeleteItemButton
                             itemId={item.id}
                             itemName={item.name} 
+                        />
+                    </div>
+                    {/* Mobile: stacked layout */}
+                    <div className="flex sm:hidden flex-col gap-2">
+                        <EditItemButton item={item} />
+                        <DeleteItemButton
+                            itemId={item.id}
+                            itemName={item.name}
                         />
                     </div>
                 </td>
