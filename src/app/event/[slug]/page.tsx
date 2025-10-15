@@ -53,8 +53,8 @@ export default async function EventPage({ params }: PageProps) {
     }, {})
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8 px-4">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen bg-gray-50 py-8 px-4 overflow-x-hidden">
+            <div className="max-w-4xl mx-auto w-full">
                 {/* SECTION: Event Header (YAYY) */}
                 <div className= "bg-white rounded-lg shadow-md p-6 mb-6">
                     <h1 className="text-3xl font-bold text-gray-900 mb-4">{event.name}</h1>

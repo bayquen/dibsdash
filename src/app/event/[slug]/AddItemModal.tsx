@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from  'next/navigation';
 // DRY principle: Used a constant here to avoid duplication of categories
 // between Item modals (i.e. adding and editing)
@@ -25,6 +25,20 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
     // State for custom item-category user input yayyy!
     const [showCustomInput, setShowCustomInput] = useState(false)
     const [customCategoryName, setCustomCategoryName] = useState('')
+
+    // 10/15/2025 TODO TEST: Disable user scrolling when this modal is open
+    // useEffect(() => {
+    //     if (isOpen) {
+    //         document.body.style.overflow = 'hidden';
+    //     } else {
+    //         document.body.style.overflow = 'unset';
+    //     }
+    //     // Cleanup function: restores scrolling to main page to prevent it 
+    //     // from staying locked if modal closes unexpectedly
+    //     return () => {
+    //         document.body.style.overflow = 'unset';
+    //     };
+    // }, [isOpen]);
 
     // Handle item category dropdown changes
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
