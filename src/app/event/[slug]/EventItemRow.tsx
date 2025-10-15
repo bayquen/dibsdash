@@ -25,8 +25,8 @@ export default function EventItemRow({ item }: EventItemRowProps) {
             <tr className="border-b hover:bg-gray-50">
                 {/* Item Name Column */}
                 <td className="px-4 py-3 align-top">
-                    <div className="flex items-start gap-2 min-w-0">
-                        <span className="font-medium break-words">{item.name}</span>
+                    <div className="flex items-center gap-2 min-w-0">
+                        <span className="font-medium break-words self-center">{item.name}</span>
                         {/* Show icon button if item notes exist */}
                         {item.notes && (
                             <button
