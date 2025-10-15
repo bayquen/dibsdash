@@ -34,7 +34,7 @@ export default function DeleteItemButton({ itemId, itemName }: DeleteItemButtonP
         <button
             onClick={handleDelete}
             disabled={loading}
-            className="ml-2 text-red-500 hover:text-red-700 text-sm font-bold disabled:opacity-50"
+            className="min-h-[44px] min-w-[44px] px-4 py-2 text-sm font-medium text-red-700 bg-red-100 border border-red-200 rounded-lg hover:bg-red-200 active:scale-95 transition-all"
             title="Delete Item"
         >
             ×

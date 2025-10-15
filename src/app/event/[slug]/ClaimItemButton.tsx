@@ -63,7 +63,7 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
             <button
                 onClick={handleUnclaim}
                 disabled={loading}
-                className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm hover:bg-green-200 disabled:opacity-50"
+                className="min-h-[44px] px-4 py-2 bg-green-100 text-green-800 border border-green-200 rounded-lg text-sm font-medium hover:bg-green-200 active:scale-95 transition-all disabled:opacity-50"
             >
             ✓ {currentClaimer} 
             </button>
@@ -80,7 +80,7 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
                     onKeyPress={(e) => e.key === 'Enter' && handleClaim()}
                     placeholder="Your name"
                     autoFocus
-                    className="px-2 py-1 text-sm border rounded"
+                    className="min-h-[44px] px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 <button
                     onClick={handleClaim}
@@ -105,7 +105,7 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
     return (
         <button
             onClick={() => setShowInput(true)}
-            className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm hover:bg-blue-200"
+            className="min-h-[44px] min-w-[44px] px-3 py-2 bg-blue-600 text-white border border-blue-700 rounded-lg text-sm font-medium hover:bg-blue-700 active:scale-95 transition-all disabled:opacity-50"
         >
             Claim item
         </button>
