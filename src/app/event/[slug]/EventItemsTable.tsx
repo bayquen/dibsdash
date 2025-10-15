@@ -49,7 +49,7 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
                                     {isCollapsed ? '▶' : '▼'} {category}
                                 </span>
                                 <span className="text-sm text-gray-600">
-                                    ({totalCount} {totalCount === 1 ? 'item' : 'items'}, {claimedCount} claimed)
+                                    ({totalCount} {totalCount === 1 ? 'item' : 'items'}, {claimedCount}/{totalCount} claimed)
                                 </span>
                             </div>
                         </button>
@@ -57,19 +57,19 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
                         {/* Category Table (hidden when collapsed) */}
                         {!isCollapsed && (
                             <div className="overflow-x-auto">
-                                <table className="w-full">
+                                <table className="w-full min-w-[640px]">
                                     <thead className="bg-gray-50">
                                         <tr>
-                                            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                                            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 w-[40%]">
                                                 Item
                                             </th>
-                                            <th className="px-4 py-2 text-center text-sm font-semibold text-gray-700">
+                                            <th className="px-4 py-2 text-center text-sm font-semibold text-gray-700 w-[10%]">
                                                 Quantity
                                             </th>
-                                            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">
+                                            <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700 w-[25%]">
                                                 Claimed By
                                             </th>
-                                            <th className="px-4 py-2 text-right text-sm font-semibold text-gray-700">
+                                            <th className="px-4 py-2 text-right text-sm font-semibold text-gray-700 w-[25%]">
                                                 Actions
                                             </th>
                                         </tr>

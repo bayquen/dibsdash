@@ -108,7 +108,7 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
             onClick={() => setShowInput(true)}
             className="min-h-[44px] min-w-[44px] px-3 py-2 bg-blue-600 text-white border border-blue-700 rounded-lg text-sm font-medium hover:bg-blue-700 active:scale-95 transition-all disabled:opacity-50"
         >
-            Claim item
+            Claim this item
         </button>
     )
 }

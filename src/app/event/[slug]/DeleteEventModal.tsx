@@ -41,7 +41,7 @@ export default function DeleteEventModal({ eventSlug, isOpen, onClose }: DeleteE
             <div className="bg-white rounded-lg max-w-md w-full p-6">
                 <h2 className="text-xl font-bold mb-4">Delete Event</h2>
                 <p className="text-red-600 mb-4">
-                    Warning: This will permanently delete the event and all its items!
+                    Warning: This will permanently delete this event and all its items!
                 </p>
 
                 <p className="text-sm text-gray-600 mb-3">

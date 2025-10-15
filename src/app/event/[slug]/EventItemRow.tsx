@@ -24,29 +24,29 @@ export default function EventItemRow({ item }: EventItemRowProps) {
             {/* Main items row */}
             <tr className="border-b hover:bg-gray-50">
                 {/* Item Name Column */}
-                <td className="px-4 py-3">
-                    <div className="flex items-center gap-2">
-                        <span className="font-medium">{item.name}</span>
+                <td className="px-4 py-3 align-top">
+                    <div className="flex items-start gap-2 min-w-0">
+                        <span className="font-medium break-words">{item.name}</span>
                         {/* Show icon button if item notes exist */}
                         {item.notes && (
                             <button
                                 onClick={() => setNotesExpanded(!notesExpanded)}
-                                className="text-blue-600 hover:text-blue-800 text-sm"
+                                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-blue-600 hover:bg-blue-50 rounded-lg text-base flex-shrink-0 active:scale-95 transition-all"
                                 title="Click to view notes"
                             >
-                                ⓘ
+                                ⓘ Notes
                             </button>
                         )}
                     </div>
                 </td>
                 
                 {/* Quantity Column */}
-                <td className="px-4 py-3 text-center">
+                <td className="px-4 py-3 text-center align-top">
                     {item.quantity > 1 ? `${item.quantity}` : '1'}
                 </td>
 
                 {/* "Claimed by" Column */}
-                <td className="px-4 py-3">
+                <td className="px-4 py-3 align-top">
                     <div className="flex flex-col sm:flex-row sm:items-center">
                         <ClaimItemButton
                             itemId={item.id}
@@ -57,7 +57,7 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                 </td>
 
                 {/* User Actions Column */}
-                <td className="px-4 py-3">
+                <td className="px-4 py-3 align-top">
                     {/* Desktop: horizontal layout */}
                     <div className="hidden sm:flex gap-2 justify-end">
                         <EditItemButton item={item} />
