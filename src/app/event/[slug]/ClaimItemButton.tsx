@@ -78,8 +78,9 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleClaim()}
-                    placeholder="Your name"
+                    placeholder="Name of who's claiming item"
                     autoFocus
+                    maxLength={35}
                     className="min-h-[44px] px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 <button

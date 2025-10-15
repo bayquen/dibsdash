@@ -109,7 +109,11 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
                             className= "w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder=""
+                            maxLength={40}
                         />
+                        <p>
+                            {formData.name.length}/40 characters
+                        </p>
                     </div>
 
                     {/* Item Category */}
@@ -176,8 +180,13 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                         onChange={(e) => setFormData({...formData, claimed_by: e.target.value})}
                         className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="(Optional)"
+                        maxLength={35}
                     />
+                    <p>
+                        {formData.claimed_by.length}/35
+                    </p>
                     </div>
+
                     {/* Item Notes */}
                     <div className="mb-6">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
