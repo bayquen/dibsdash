@@ -43,6 +43,20 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         }
     }, [item.category])
 
+     // 10/15/2025 TODO TEST: Disable user scrolling when this modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        // Cleanup function: restores scrolling to main page to prevent it 
+        // from staying locked if modal closes unexpectedly
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     // Handle item category dropdown changes
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const value = e.target.value
@@ -103,7 +117,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                     {/* Item Name */}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Item Name *
+                            Item Name <span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -111,13 +125,18 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value})}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder=""
+                            maxLength={40}
                         />
+                        <p className="text-xs text-gray-500 mt-1">
+                            {formData.name.length}/40 characters
+                        </p>
                     </div>
 
                     {/* Item Category */}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Category *
+                            Category <span className="text-red-500">*</span>
                         </label>
                         <select
                             required
@@ -137,7 +156,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                     {showCustomInput && (
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2">
-                                Custom Category Name *
+                                Custom Category Name <span className="text-red-500">*</span>
                             </label>
                             <input
                                 type="text"
@@ -179,7 +198,11 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                             onChange={(e) => setFormData({...formData, claimed_by: e.target.value})}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="(Optional)"
+                            maxLength={35}
                         />
+                        <p className="text-xs text-gray-500 mt-1">
+                            {formData.claimed_by.length}/35 characters
+                        </p>
                     </div>
                     
                     {/* Item Notes */}

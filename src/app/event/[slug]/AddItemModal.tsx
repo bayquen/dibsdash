@@ -27,18 +27,18 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
     const [customCategoryName, setCustomCategoryName] = useState('')
 
     // 10/15/2025 TODO TEST: Disable user scrolling when this modal is open
-    // useEffect(() => {
-    //     if (isOpen) {
-    //         document.body.style.overflow = 'hidden';
-    //     } else {
-    //         document.body.style.overflow = 'unset';
-    //     }
-    //     // Cleanup function: restores scrolling to main page to prevent it 
-    //     // from staying locked if modal closes unexpectedly
-    //     return () => {
-    //         document.body.style.overflow = 'unset';
-    //     };
-    // }, [isOpen]);
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        // Cleanup function: restores scrolling to main page to prevent it 
+        // from staying locked if modal closes unexpectedly
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
     // Handle item category dropdown changes
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -114,7 +114,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                     {/* Item Name */}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Item Name *
+                            Item Name <span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -125,7 +125,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                             placeholder=""
                             maxLength={40}
                         />
-                        <p>
+                        <p className="text-xs text-gray-500 mt-1">
                             {formData.name.length}/40 characters
                         </p>
                     </div>
@@ -133,7 +133,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                     {/* Item Category */}
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Category *
+                            Category <span className="text-red-500">*</span>
                         </label>
                         <select
                             value={showCustomInput ? '__custom__' : formData.category}
@@ -152,7 +152,7 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                     {showCustomInput && (
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2">
-                                Custom Category Name *
+                                Custom Category Name <span className="text-red-500">*</span>
                             </label>
                             <input
                                 type="text"
@@ -196,8 +196,8 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
                         placeholder="(Optional)"
                         maxLength={35}
                     />
-                    <p>
-                        {formData.claimed_by.length}/35
+                    <p className="text-xs text-gray-500 mt-1">
+                        {formData.claimed_by.length}/35 characters
                     </p>
                     </div>
 
