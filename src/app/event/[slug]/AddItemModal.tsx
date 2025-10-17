@@ -26,7 +26,6 @@ export default function AddItemModal({ eventId, isOpen, onClose }: AddItemModalP
     const [showCustomInput, setShowCustomInput] = useState(false)
     const [customCategoryName, setCustomCategoryName] = useState('')
 
-    // 10/15/2025 TODO TEST: Disable user scrolling when this modal is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';

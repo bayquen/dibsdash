@@ -33,17 +33,37 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
     const [showCustomInput, setShowCustomInput] = useState(false)
     const [customCategoryName, setCustomCategoryName] = useState('')
 
-    // Check if the item's category is custom (i.e. not in preset list!)
-    useEffect(() => {
-        if (!ITEM_CATEGORIES.includes(item.category as any)) {
-            // This is a custom category
-            setShowCustomInput(true)
-            setCustomCategoryName(item.category)
-            setFormData(prev => ({...prev, category: ''}))
-        }
-    }, [item.category])
+    // // Check if the item's category is custom (i.e. not in preset list!)
+    // useEffect(() => {
+    //     if (!ITEM_CATEGORIES.includes(item.category as any)) {
+    //         // This is a custom category
+    //         setShowCustomInput(true)
+    //         setCustomCategoryName(item.category)
+    //         setFormData(prev => ({...prev, category: ''}))
+    //     }
+    // }, [item.category])
 
-     // 10/15/2025 TODO TEST: Disable user scrolling when this modal is open
+    useEffect(() => {
+        if (isOpen) {
+            setFormData({
+                name: item.name,
+                category: item.category,
+                quantity: item.quantity.toString(),
+                notes: item.notes || '',
+                claimed_by: item.claimed_by || ''
+            })
+            
+            // Check if category is custom
+            if (!ITEM_CATEGORIES.includes(item.category as any)) {
+                setShowCustomInput(true)
+                setCustomCategoryName(item.category)
+            } else {
+                setShowCustomInput(false)
+                setCustomCategoryName('')
+            }
+        }
+    }, [isOpen, item])
+
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -64,6 +84,10 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         if (value === '__custom__') {
             // User selected a preset category
             setShowCustomInput(true)
+            setCustomCategoryName('')
+            setFormData({...formData, category: value})
+        } else {
+            setShowCustomInput(false)
             setCustomCategoryName('')
             setFormData({...formData, category: value})
         }

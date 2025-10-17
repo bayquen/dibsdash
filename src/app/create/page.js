@@ -69,7 +69,7 @@ export default function CreateEventPage() {
               value={formData.name}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Sarah's Birthday Party"
+              placeholder="e.g. Potluck Dinner Party"
             />
           </div>
 
@@ -83,7 +83,7 @@ export default function CreateEventPage() {
               value={formData.description}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Let's celebrate! Bring your friends!"
+              placeholder="e.g. Get together and share our homecooked meals!"
               rows="3"
             />
           </div>
@@ -127,7 +127,7 @@ export default function CreateEventPage() {
               value={formData.location}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="123 Main St, City"
+              placeholder=""
             />
           </div>
 

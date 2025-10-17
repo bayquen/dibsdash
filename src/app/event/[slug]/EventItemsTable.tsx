@@ -56,7 +56,7 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
 
                         {/* Category Table (hidden when collapsed) */}
                         {!isCollapsed && (
-                            <div className="overflow-x-auto">
+                            <div className="overflow-x-auto scrollbar-custom">
                                 <table className="w-full sm:min-w-[640px]">
                                     <thead className="bg-gray-50">
                                         <tr>

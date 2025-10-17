@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Scrollbar for event items table */
+.scrollbar-custom {
+    -webkit-overflow-scrolling: touch;    /* Enable momentum scrolling on iOS */
+}
+
+@supports selector(::-webkit-scrollbar) {
+    .scrollbar-custom::-webkit-scrollbar {
+        width: 12px;
+        height: 48px;
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+        background: #64748b;
+        border-radius: 8px;
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+        background: #475569;
+    }
+}
+
+/* Scrollbar: for Firefox users because it uses */
+/* a different scrollbar API than other browsers */
+.scrollbar-custom {
+    scrollbar-color: #64748b #f1f5f9;
+    scrollbar-width: thick;
+}

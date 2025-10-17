@@ -39,7 +39,6 @@ async function getEvent(slug: string) {
 export default async function EventPage({ params }: PageProps) {
     const { slug } = await params         // Add: Await the params (Next.js 15)
     const event = await getEvent(slug)    // Use slug directly
-    // const [showAddModal, setShowAddModal] = useState(false)
 
     if (!event) {
         notFound()  // Trigger 404 page if event doesn't exist
