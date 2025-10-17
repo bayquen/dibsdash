@@ -13,7 +13,7 @@ export default function AddItemButton({ eventId }: AddItemButtonProps) {
         <>
             <button
                 onClick={() => setShowModal(true)}
-                className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 font-medium"
+                className="mt-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium active:scale-95 transition-all"
             >
                 Add Item
             </button>

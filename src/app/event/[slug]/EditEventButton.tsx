@@ -13,7 +13,7 @@ export default function EditEventButton( { event }: EditEventModalProps) {
         <>
             <button
                 onClick={() => setShowModal(true)}
-                className="text-sm text-blue-600 hover:text-blue-700"
+                className="mt-1 px-4 py-2 relative left-4 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium active:scale-95 transition-all"
             >
                 Edit Event 
             </button>
