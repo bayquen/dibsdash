@@ -74,8 +74,8 @@ export default async function EventPage({ params }: PageProps) {
                     </div>
 
                     {/* SECTION: Share Link (YAYYY) */}
-                    <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                        <p className="text-sm font-semibold text-gray-700 mb-2">Share this event:</p>
+                    <div className="mt-6 p-4">
+                        <p className="text-md font-semibold text-black-700 mb-2">Share this event:</p>
                         <div className="flex items-center gap-2">
                             <input
                             type="text"
@@ -83,7 +83,7 @@ export default async function EventPage({ params }: PageProps) {
                             value={`${typeof window !== 'undefined' ? window.location.origin : ''}/event/${event.url_slug}`}
                             className="flex-1 px-3 py-2 bg-white border border-gray-300 rounded text-sm"
                             />    
-                            <ShareButton url={`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/event/${event.url_slug}`} />          
+                            <ShareButton url={`${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/event/${event.url_slug}`} />
                         </div>
                     </div>
 

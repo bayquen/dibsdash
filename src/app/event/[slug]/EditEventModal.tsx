@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface EditEventModalProps {
@@ -18,6 +18,32 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
         time: event.time || '',
         location: event.location || ''
     })
+
+    // TEST: 10/16/2025 - refresh state if user cancels editing changes
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        // Cleanup function: restores scrolling to main page to prevent it 
+        // from staying locked if modal closes unexpectedly
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
+    useEffect(() => {
+        if (isOpen) {
+            setFormData({
+                name: event.name || '',
+                description: event.description || '',
+                date: event.date ? event.date.split('T')[0] : '',
+                time: event.time || '',
+                location: event.location || ''
+            })
+        }
+    }, [isOpen, event])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -62,7 +88,7 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
-                            Event Name *
+                            Event Name <span className="text-red-500">*</span>
                         </label>
                         <input
                             name="name"

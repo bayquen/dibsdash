@@ -29,19 +29,9 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         claimed_by: item.claimed_by || ''
     })
 
-    // State custom item category input, yuhhh!
+    // State for custom item category input, yuhhh!
     const [showCustomInput, setShowCustomInput] = useState(false)
     const [customCategoryName, setCustomCategoryName] = useState('')
-
-    // // Check if the item's category is custom (i.e. not in preset list!)
-    // useEffect(() => {
-    //     if (!ITEM_CATEGORIES.includes(item.category as any)) {
-    //         // This is a custom category
-    //         setShowCustomInput(true)
-    //         setCustomCategoryName(item.category)
-    //         setFormData(prev => ({...prev, category: ''}))
-    //     }
-    // }, [item.category])
 
     useEffect(() => {
         if (isOpen) {

@@ -59,7 +59,7 @@ export default function CreateEventPage() {
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-              Event Name *
+              Event Name <span className="text-red-500">*</span>
             </label>
             <input
               id="name"
@@ -135,7 +135,7 @@ export default function CreateEventPage() {
             <button
               type="submit"
               disabled={loading || !formData.name}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed w-full"
+              className="min-h-[44px] min-w-[44px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed w-full active:scale-95 transition-all"
             >
               {loading ? 'Creating...' : 'Create Event'}
             </button>

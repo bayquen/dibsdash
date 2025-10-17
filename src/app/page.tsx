@@ -9,7 +9,7 @@ export default function Home() {
         {/* Note: Added `&apos;` for apostrophe mark to avoid any ESLint warnings for TypeScript */}
         Who's bringing what? Solved. One link and everyone's in sync.
       </p>
-      <Link href="/create" className="inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors text-lg"
+      <Link href="/create" className="inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-blue-700 active:scale-95 transition-all text-lg"
       >
         Create Event
       </Link>
