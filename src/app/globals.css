@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    html {
+        font-size: 90%; /* Everything resized */
+    }
+}
+
 /* Scrollbar for event items table */
 .scrollbar-custom {
     -webkit-overflow-scrolling: touch;    /* Enable momentum scrolling on iOS */
