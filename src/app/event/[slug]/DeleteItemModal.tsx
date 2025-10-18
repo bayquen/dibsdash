@@ -50,4 +50,37 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
 
     if (!isOpen) return null
 
+    return (
+        <div>
+            <div>
+                <h2>Delete Item</h2>
+                <p>
+                    Are you sure you want to <span className="text-red-500">delete</span> this event item?
+                </p>
+                <p>
+                    "{itemName}"
+                </p>
+                <p>
+                    This action cannot be undone.
+                </p>
+
+                <div>
+                    <button
+                        onClick={onClose}
+                        disabled={loading}
+                        className=""
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={handleDelete}
+                        disabled={loading}
+                        className=""
+                    >
+                        {loading ? 'Deleting...' : 'Delete Item'}
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
 }
