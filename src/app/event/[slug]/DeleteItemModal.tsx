@@ -27,5 +27,27 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
         };
     }, [isOpen]);
 
-    
+    const handleDelete = async () => {
+        setLoading(true)
+        try {
+            const response = await fetch(`api/items/${itemId}`, {
+                method: 'DELETE'
+            })
+
+            if (response.ok) {
+                router.refresh()    // Refresh to show updated items list
+                onClose()           // Close modal :)
+            } else {
+                alert('Failed to delete item')
+            }
+        } catch (error) {
+            console.error('Error deleting item: ', error)
+            alert('Error deleting item')
+        } finally {
+            setLoading(false)
+        }
+    }
+
+    if (!isOpen) return null
+
 }
