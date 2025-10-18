@@ -1,6 +1,18 @@
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
-// To run app on dev server: `pnpm run dev` (or just npm)
+export const metadata: Metadata = {
+  title: 'DibsPlan',
+  description: 'Coordinate and keep track of party and potluck items',
+}
+
+// Next 15.x requires separate import for the Viewport!
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+  maximumScale: 5.0,
+  userScalable: true,
+}
 
 export default function RootLayout({
     children,
