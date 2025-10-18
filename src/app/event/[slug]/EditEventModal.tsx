@@ -19,7 +19,7 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
         location: event.location || ''
     })
 
-    // TEST: 10/16/2025 - refresh state if user cancels editing changes
+    // Refresh state if user cancels editing changes
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
