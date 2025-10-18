@@ -83,7 +83,7 @@ export default function CreateEventPage() {
               value={formData.description}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="e.g. Get together and share our homecooked meals!"
+              placeholder="e.g. Ready to share meals and mingle. Bring your best dishes!"
               rows="3"
             />
           </div>
