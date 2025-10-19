@@ -1,0 +1,92 @@
+'use client';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+interface UnclaimItemModalProps {
+    itemId: string
+    itemName: string
+    currentClaimer: string
+    isOpen: boolean
+    onClose: () => void
+}
+
+export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isOpen, onClose }: UnclaimItemModalProps) {
+    const router = useRouter()
+    const [loading, setLoading] = useState(false) 
+
+    // Disable scrolling when this modal is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        // Cleanup function: restores scrolling to main page to prevent it 
+        // from staying locked if modal closes unexpectedly
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
+    const handleUnclaim = async () => {
+        setLoading(true)
+        try {
+            const response = await fetch(`/api/items/${itemId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ claimed_by: null })
+            })
+
+            if (response.ok) {
+                router.refresh()
+                onClose()
+            } else {
+                alert('Failed to unclaim item')
+            } 
+        } catch (error) {
+                console.error('Error unclaiming item:', error)
+                alert('Error unclaiming item')
+            } finally {
+                setLoading(false)
+        }  
+    }
+
+    if (!isOpen) return null
+
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-lg max-w-md w-full p-6">
+                <h2 className="text-xl font-bold mb-4 text-black-900">Unclaim Item</h2>
+
+                <p className="text-gray-700 mb-2">
+                Set this item as unclaimed?
+
+                </p>
+                <p className="text-lg font-semibold text-gray-900 mb-2">
+                    "{itemName}"
+                </p>
+                <p className="text-sm text-gray-600 mb-6">
+                    Claimed by: <span className="font-semibold">{currentClaimer}</span>
+                    <span className="text-green-600">Note:</span> Make sure to ask permission from the item's claimer, or host&lpar;s&lpar;!
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                    <button
+                        onClick={onClose}
+                        disabled={loading}
+                        className="w-full sm:flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 active:scale-95 transition-all"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={handleUnclaim}
+                        disabled={loading}
+                        className="w-full sm:flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                       {loading ? 'Unclaiming...' : 'Unclaim'}
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}
