@@ -64,9 +64,9 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
                     "{itemName}"
                 </p>
                 <p className="text-md text-600 mb-3">
-                    Claimed by: <span className="font-semibold">{currentClaimer}</span>
+                    Claimed By: <span className="font-semibold break-words">{currentClaimer}</span>
                 </p>
-                <p className="text-sm text-gray-600 mb-6">
+                <p className="text-sm text-gray-600 mb-6 break-words">
                     <span className="text-green-600">Note:</span> Make sure to ask permission from the item's current claimer or event host(s)!
                 </p>
 

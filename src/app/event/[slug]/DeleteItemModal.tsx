@@ -57,7 +57,7 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
                 <p className="text-gray-700 mb-2">
                     Are you sure you want to <span className="text-red-500">delete</span> this event item?
                 </p>
-                <p className="text-lg font-semibold text-gray-900 mb-4">
+                <p className="text-lg font-semibold break-words text-gray-900 mb-4">
                     "{itemName}"
                 </p>
 
