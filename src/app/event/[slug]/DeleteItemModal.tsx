@@ -30,7 +30,7 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
     const handleDelete = async () => {
         setLoading(true)
         try {
-            const response = await fetch(`api/items/${itemId}`, {
+            const response = await fetch(`/api/items/${itemId}`, {
                 method: 'DELETE'
             })
 
