@@ -13,7 +13,7 @@ export default function DeleteEventButton({ eventSlug }: DeleteEventButtonProps)
         <>
             <button
                 onClick={() => setShowModal(true)}
-                className="text-sm text-red-600 hover:text-red-700"
+                className="text-lg text-red-600 hover:text-red-700"
             >
                 Delete Event
             </button>

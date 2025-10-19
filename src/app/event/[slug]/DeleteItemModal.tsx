@@ -60,7 +60,12 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
                 <p className="text-lg font-semibold text-gray-900 mb-4">
                     "{itemName}"
                 </p>
-                <p className="text-sm text-red-600 mb-6">
+
+                <p className="text-sm text-gray-600 mb-6">
+                    <span className="text-blue-600">Note:</span> Make sure to ask permission from the item's claimer or host(s)!
+                </p>
+
+                <p className="text-sm text-red-600 mb-2">
                     This action cannot be undone.
                 </p>
 

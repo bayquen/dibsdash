@@ -56,18 +56,18 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg max-w-md w-full p-6">
-                <h2 className="text-xl font-bold mb-4 text-black-900">Unclaim Item</h2>
+                <h2 className="text-xl font-bold mb-4 text-900">
+                    Set this item as <span className="text-orange-600">unclaimed</span>?
+                </h2>
 
-                <p className="text-gray-700 mb-2">
-                Set this item as unclaimed?
-
-                </p>
-                <p className="text-lg font-semibold text-gray-900 mb-2">
+                <p className="text-lg font-semibold text-gray-900 mb-3">
                     "{itemName}"
                 </p>
-                <p className="text-sm text-gray-600 mb-6">
+                <p className="text-md text-600 mb-3">
                     Claimed by: <span className="font-semibold">{currentClaimer}</span>
-                    <span className="text-green-600">Note:</span> Make sure to ask permission from the item's claimer, or host&lpar;s&lpar;!
+                </p>
+                <p className="text-sm text-gray-600 mb-6">
+                    <span className="text-green-600">Note:</span> Make sure to ask permission from the item's current claimer or event host(s)!
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -81,7 +81,7 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
                     <button
                         onClick={handleUnclaim}
                         disabled={loading}
-                        className="w-full sm:flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full sm:flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-orange-700 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                        {loading ? 'Unclaiming...' : 'Unclaim'}
                     </button>

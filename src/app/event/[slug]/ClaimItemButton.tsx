@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import UnclaimItemModal from './UnclaimItemModal';
 
 interface ClaimItemButtonProps {
     itemId: string
@@ -13,6 +14,7 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
     const [showInput, setShowInput] = useState(false)
     const [name, setName] = useState('')
     const [loading, setLoading] = useState(false)
+    const [showUnclaimModal, setShowUnclaimModal] = useState(false)
 
     const handleClaim = async () => {
         if (!name.trim()) return
@@ -37,36 +39,46 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
         }
     }
 
-    const handleUnclaim = async () => {
-        if (!confirm(`Set "${itemName}" as unclaimed?`)) return
+    // const handleUnclaim = async () => {
+    //     if (!confirm(`Set "${itemName}" as unclaimed?`)) return
 
-        setLoading(true)
-        try {
-            const response = await fetch(`/api/items/${itemId}`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ claimed_by: null })
-            })
+    //     setLoading(true)
+    //     try {
+    //         const response = await fetch(`/api/items/${itemId}`, {
+    //             method: 'PATCH',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({ claimed_by: null })
+    //         })
 
-            if (response.ok) {
-                router.refresh()
-            }
-        } catch (error) {
-            console.error('Error unclaiming item:', error)
-        } finally {
-            setLoading(false)
-        }
-    }
+    //         if (response.ok) {
+    //             router.refresh()
+    //         }
+    //     } catch (error) {
+    //         console.error('Error unclaiming item:', error)
+    //     } finally {
+    //         setLoading(false)
+    //     }
+    // }
 
     if (currentClaimer) {
         return (
-            <button
-                onClick={handleUnclaim}
-                disabled={loading}
-                className="min-h-[44px] px-4 py-2 bg-green-100 text-green-800 border border-green-200 rounded-lg text-sm font-medium hover:bg-green-200 active:scale-95 transition-all disabled:opacity-50"
-            >
-            {currentClaimer} ✓ 
-            </button>
+            <>
+                <button
+                    onClick={() => setShowUnclaimModal(true)}
+                    disabled={loading}
+                    className="min-h-[44px] px-4 py-2 bg-green-100 text-green-800 border border-green-200 rounded-lg text-sm font-medium hover:bg-green-200 active:scale-95 transition-all disabled:opacity-50"
+                >
+                {currentClaimer} ✓ 
+                </button>
+
+                <UnclaimItemModal
+                    itemId={itemId}
+                    itemName={itemName}
+                    currentClaimer={currentClaimer}
+                    isOpen={showUnclaimModal}
+                    onClose={() => setShowUnclaimModal(false)}
+                />
+            </>
         )
     }
 
