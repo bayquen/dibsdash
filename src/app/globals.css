@@ -4,7 +4,7 @@
 
 @layer base {
     html {
-        font-size: 90%; /* Everything resized */
+        font-size: 90%; /* Everything resized to make page components appear zoomed out */
     }
 }
 
