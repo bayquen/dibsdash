@@ -82,7 +82,7 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg max-w-md w-full p-6">
+            <div className="bg-white rounded-lg w-full max-w-sm sm:max-w-md lg:max-w-lg max-h-[90vh] overflow-y-auto p-4 sm:p-6 m-4">
                 <h2 className="text-2xl font-bold mb-4">Edit Event Details</h2>
 
                 <form onSubmit={handleSubmit}>

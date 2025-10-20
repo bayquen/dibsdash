@@ -35,7 +35,7 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
             })
 
             if (response.ok) {
-                router.refresh()    // Refresh to show updated items list
+                router.refresh()    // Refresh to show updated items list if deletion succeeds
                 onClose()           // Close modal :)
             } else {
                 alert('Failed to delete item')
