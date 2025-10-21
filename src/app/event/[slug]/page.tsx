@@ -72,10 +72,19 @@ export default async function EventPage({ params }: PageProps) {
                         </div>
                     )}
                     </div>
+                    
+                    {/* <div className="flex-items-center mt-4">
+                        <p>
+                            Don't
+                        </p>
+                    </div> */}
 
                     {/* SECTION: Share Link (YAYYY) */}
                     <div className="mt-6 p-4">
-                        <p className="text-md font-semibold text-black-700 mb-2">Share this event:</p>
+                        <p className="text-md font-semibold mb-2">
+                            <span className="text-red-500">IMPORTANT Note:</span> For event hosts, don't forget to save your event link somewhere, or you'll lose access!
+                        </p>
+                        <p className="text-md font-semibold mb-2">Share this event:</p>
                         <div className="flex items-center gap-2">
                             <input
                             type="text"
