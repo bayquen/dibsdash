@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         swanky: ['"Fontdiner Swanky"', 'serif'],
+        rubik: ['Rubik', 'sans-serif'],
       },
     },
   },

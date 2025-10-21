@@ -52,7 +52,7 @@ export default function CreateEventPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4">
       <div className="max-w-md mx-auto">
         <h1 className="text-3xl font-bold text-center mb-8">Create Your Event</h1>
         
