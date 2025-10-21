@@ -1,12 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 @layer base {
     html {
         font-size: 90%; /* Everything resized to make page components appear zoomed out */
     }
 }
+
+/* CUSTOM FONTS */
+/* Fontdiner Swanky (from Google Fonts) */
+.fontdiner-swanky-regular {
+  font-family: "Fontdiner Swanky", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* SCROLLBARS */
 
 /* Scrollbar for event items table */
 .scrollbar-custom {
@@ -39,6 +52,9 @@
     scrollbar-color: #64748b #f1f5f9;
     scrollbar-width: thick;
 }
+
+
+/* BUTTONS */
 
 /* Custom button for landing page (10/20/25) */
 /* From Uiverse.io by Voxybuns */ 
