@@ -84,6 +84,11 @@
   background: var(--button_outline_color);
 }
 
+.custom-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .custom-button-top {
   display: block;
   box-sizing: border-box;
@@ -103,5 +108,9 @@
 
 .custom-button:active .custom-button-top {
   /* Push the button downwards when pressed */
+  transform: translateY(0);
+}
+
+.custom-button:disabled .custom-button-top {
   transform: translateY(0);
 }

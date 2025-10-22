@@ -131,13 +131,13 @@ export default function CreateEventPage() {
             />
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <button
               type="submit"
               disabled={loading || !formData.name}
-              className="min-h-[44px] min-w-[44px] bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline disabled:opacity-50 disabled:cursor-not-allowed w-full active:scale-95 transition-all"
+              className="custom-button min-h-[44px] min-w-[44px]"
             >
-              {loading ? 'Creating...' : 'Create Event'}
+              <span className="custom-button-top"> {loading ? 'Creating...' : 'Create Event'} </span>
             </button>
           </div>
         </form>
