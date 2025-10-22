@@ -66,7 +66,7 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
                 <button
                     onClick={() => setShowUnclaimModal(true)}
                     disabled={loading}
-                    className="min-h-[44px] px-4 py-2 bg-green-100 text-green-800 border border-green-200 rounded-lg text-sm font-medium hover:bg-green-200 active:scale-95 transition-all disabled:opacity-50"
+                    className="min-h-[44px] px-4 py-2 bg-green-100 text-green-800 border border-green-200 rounded-lg text-sm font-medium hover:bg-green-200 active:scale-95 transition-all disabled:opacity-50 truncate max-w-xs"
                 >
                 {currentClaimer} ✓ 
                 </button>

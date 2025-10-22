@@ -59,10 +59,10 @@ export default async function EventPage({ params }: PageProps) {
                     <h1 className="text-3xl font-bold mb-4">{event.name}</h1>
 
                     {event.description && (
-                        <p className="text-gray-700 mb-4">{event.description}</p>
+                        <p className="mb-4">{event.description}</p>
                     )}
 
-                    <div className="space-y-2 text-gray-600">
+                    <div className="space-y-2">
                         <EventDate date={event.date} time={event.time} />
 
                     {event.location && (
@@ -82,10 +82,10 @@ export default async function EventPage({ params }: PageProps) {
                     {/* SECTION: Share Link (YAYYY) */}
                     <div className="mt-2 p-4">
                         <p className="text-md max-w-md">
-                            <span className="text-red-500">IMPORTANT Note:</span>
+                            <span className="text-red-500">Important Note:</span>
                         </p>
-                        <p className="text-md max-w-2xl mb-2">
-                            For event hosts, don't forget to save your event link somewhere, or you'll lose access!
+                        <p className="text-md text-gray-700 max-w-2xl mb-2">
+                            Event hosts, don't forget to take note of your event link (URL) or it will be lost!
                         </p>
                         <p className="text-md font-semibold mb-2">Share this event:</p>
                         <div className="flex items-center gap-2 max-w-xs">
