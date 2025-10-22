@@ -55,7 +55,7 @@ export default async function EventPage({ params }: PageProps) {
         <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8 px-4 overflow-x-hidden">
             <div className="max-w-4xl mx-auto w-full">
                 {/* SECTION: Event Header (YAYY) */}
-                <div className= "bg-white rounded-lg shadow-md p-6 mb-6">
+                <div className= "bg-white rounded-lg shadow-lg p-6 mb-6">
                     <h1 className="text-3xl font-bold mb-4">{event.name}</h1>
 
                     {event.description && (
@@ -80,9 +80,12 @@ export default async function EventPage({ params }: PageProps) {
                     </div> */}
 
                     {/* SECTION: Share Link (YAYYY) */}
-                    <div className="mt-6 p-4">
-                        <p className="text-md max-w-lg mb-2">
-                            <span className="text-red-500">IMPORTANT Note:</span> For event hosts, don't forget to save your event link somewhere, or you'll lose access!
+                    <div className="mt-2 p-4">
+                        <p className="text-md max-w-md">
+                            <span className="text-red-500">IMPORTANT Note:</span>
+                        </p>
+                        <p className="text-md max-w-2xl mb-2">
+                            For event hosts, don't forget to save your event link somewhere, or you'll lose access!
                         </p>
                         <p className="text-md font-semibold mb-2">Share this event:</p>
                         <div className="flex items-center gap-2 max-w-xs">
@@ -103,7 +106,7 @@ export default async function EventPage({ params }: PageProps) {
                 </div>
                 
                 {/* SECTION: Items (YAYYY) - NOW WITH TABLE LAYOUT */}
-                <div className="bg-white rounded-lg shadow-md p-6">
+                <div className="bg-white rounded-lg shadow-lg p-6">
                     <div className="flex justify-between items-center mb-6">
                         <h2 className="text-2xl font-bold text-gray-900">Items Needed</h2>
                         <AddItemButton eventId={event.id} />
