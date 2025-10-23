@@ -96,7 +96,8 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
                             required
                             value={formData.name}
                             onChange={handleChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="placeholder:italic shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            placeholder={event.name ? `${event.name}` : ''}
                             maxLength={50}
                         />
                         <p className="text-xs text-gray-500 mt-1">
