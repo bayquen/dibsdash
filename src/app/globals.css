@@ -1,3 +1,5 @@
+/* Home page custom font import: Fontdiner Swanky */
+@import url('https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap');  
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -112,3 +114,4 @@
 .custom-button:disabled .custom-button-top {
   transform: translateY(0);
 }
+

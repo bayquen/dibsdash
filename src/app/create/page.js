@@ -70,7 +70,11 @@ export default function CreateEventPage() {
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="e.g. Potluck Dinner Party"
+              maxLength={50}
             />
+            <p className="text-xs text-gray-500 mt-1">
+              {formData.name.length}/50 characters
+            </p>
           </div>
 
           <div className="mb-4">
@@ -104,7 +108,7 @@ export default function CreateEventPage() {
 
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="time">
-              Time
+              Time <span className="text-xs text-gray-500">(optional)</span>
             </label>
             <input
               id="time"
@@ -116,7 +120,7 @@ export default function CreateEventPage() {
             />
           </div>
 
-          <div className="mb-6">
+          <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
               Location
             </label>
@@ -127,10 +131,19 @@ export default function CreateEventPage() {
               value={formData.location}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder=""
+              placeholder="(Optional)"
+              maxLength={90}
             />
           </div>
+          <p className="text-xs text-gray-500 mt-1 mb-2">
+            {formData.name.length}/90 characters
+          </p>
+          
+          <p className="text-md mt-1 mb-4">
+            <span className="text-green-500 font-semibold">Note:</span> You can edit any of this info again later.
+          </p>
 
+          {/* Submit Button to create event */}
           <div className="flex items-center justify-center">
             <button
               type="submit"
