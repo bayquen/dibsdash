@@ -56,17 +56,17 @@ export default async function EventPage({ params }: PageProps) {
             <div className="max-w-4xl mx-auto w-full">
                 {/* SECTION: Event Header (YAYY) */}
                 <div className= "bg-white rounded-lg shadow-lg p-6 mb-6">
-                    <h1 className="text-3xl font-bold mb-4">{event.name}</h1>
+                    <h1 className="px-4 text-3xl font-bold mb-4">{event.name}</h1>
 
                     {event.description && (
-                        <p className="mb-4">{event.description}</p>
+                        <p className="px-4 mb-4">{event.description}</p>
                     )}
 
                     <div className="space-y-2">
                         <EventDate date={event.date} time={event.time} />
 
                     {event.location && (
-                        <div className="flex-items-center">
+                        <div className="px-4 flex-items-center">
                             <span className="font-semibold mr-2">📍 </span>
                             <span>{event.location}</span>
                         </div>

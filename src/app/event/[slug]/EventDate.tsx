@@ -37,12 +37,12 @@ export default function EventDate({ date, time }: EventDateProps) {
 
     return (
         <>
-            <div className="flex items-center">
+            <div className="px-4 flex items-center">
                 <span className="font-semibold mr-2">📅 </span>
                 <span>{eventDate}</span>
             </div>
             {formattedTime && (
-                <div className="flex items-center">
+                <div className="px-4 flex items-center">
                     <span className="font-semibold mr-2">🕐 </span>
                     <span>{formattedTime}</span>
                 </div>
