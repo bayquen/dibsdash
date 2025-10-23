@@ -1,7 +1,5 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import router from 'next/router';
 
 export default function Home() {
     const router = useRouter();
