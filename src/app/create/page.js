@@ -54,11 +54,11 @@ export default function CreateEventPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4">
       <div className="max-w-md mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-8">Create Your Event</h1>
+        <h1 className="text-3xl font-bold text-center mb-4">Create Your Event</h1>
         
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+            <label className="block text-md font-bold mb-2" htmlFor="name">
               Event Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -78,8 +78,8 @@ export default function CreateEventPage() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-              Description
+            <label className="block text-md font-bold mb-2" htmlFor="description">
+              Description <span className="text-sm text-gray-500">(optional)</span>
             </label>
             <textarea
               id="description"
@@ -87,14 +87,14 @@ export default function CreateEventPage() {
               value={formData.description}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="e.g. Ready to share meals and mingle. Bring your best dishes!"
-              rows="3"
+              placeholder="e.g. Come one, come all. Bring your best dishes!"
+              rows={3}
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="date">
-              Date
+            <label className="block text-md font-bold mb-2" htmlFor="date">
+              Date <span className="text-sm text-gray-500">(optional)</span>
             </label>
             <input
               id="date"
@@ -107,8 +107,8 @@ export default function CreateEventPage() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="time">
-              Time <span className="text-xs text-gray-500">(optional)</span>
+            <label className="block text-md font-bold mb-2" htmlFor="time">
+              Time <span className="text-sm text-gray-500">(optional)</span>
             </label>
             <input
               id="time"
@@ -121,8 +121,8 @@ export default function CreateEventPage() {
           </div>
 
           <div className="">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
-              Location
+            <label className="block text-md font-bold mb-2" htmlFor="location">
+              Location <span className="text-sm text-gray-500">(optional)</span>
             </label>
             <input
               id="location"
@@ -131,16 +131,16 @@ export default function CreateEventPage() {
               value={formData.location}
               onChange={handleChange}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="(Optional)"
-              maxLength={90}
+              placeholder=""
+              maxLength={100}
             />
           </div>
           <p className="text-xs text-gray-500 mt-1 mb-2">
-            {formData.name.length}/90 characters
+            {formData.location.length}/100 characters
           </p>
           
-          <p className="text-md mt-1 mb-4">
-            <span className="text-green-500 font-semibold">Note:</span> You can edit any of this info again later.
+          <p className="text-md mt-1 mb-4 max-w-md mb-2">
+            <span className="text-green-500 font-semibold">NOTE:</span> You can edit any of this info again later.
           </p>
 
           {/* Submit Button to create event */}

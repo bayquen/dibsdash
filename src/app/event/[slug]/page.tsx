@@ -82,7 +82,7 @@ export default async function EventPage({ params }: PageProps) {
                     {/* SECTION: Share Link (YAYYY) */}
                     <div className="mt-2 p-4">
                         <p className="text-md max-w-md">
-                            <span className="text-red-500">Important Note:</span>
+                            <span className="text-red-500">Important NOTE:</span>
                         </p>
                         <p className="text-md text-gray-700 max-w-2xl mb-2">
                             Event hosts, don't forget to take note of your event link (URL) or it will be lost!
