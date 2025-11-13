@@ -8,7 +8,7 @@ interface FeatureCardProps {
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, step }) => {
   return (
-    <div className="bg-white rounded-md p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 min-h-48 flex flex-col justify-between border border-black">
+    <div className="bg-white rounded-lg p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 min-h-48 flex flex-col justify-between">
       <div className="justify-end">
         <span className="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
           Step {step}
@@ -52,7 +52,7 @@ export default function FeatureGrid() {
 
   return (
     <div className="w-full max-w-md lg:max-w-2xl mx-auto py-12">
-      <h2 className="font-rubik text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8">
+      <h2 className="font-rubik text-3xl md:text-4xl lg:text-5xl font-bold text-center mt-6 mb-8">
         How It Works
       </h2>
       <h3 className="font-rubik text-md sm:text-lg md:text-xl text-gray-500 w-full text-center mb-6">

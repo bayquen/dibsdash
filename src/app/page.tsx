@@ -7,14 +7,14 @@ export default function Home() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-            <div className="max-w-4xl mx-auto px-4 py-16 mb-12 sm:py-24 text-center">
+            <div className="max-w-4xl mx-auto px-4 py-16 mb-20 sm:py-24 text-center">
                 <h1 className="fontdiner-swanky-regular text-blue-800 text-4xl sm:text-5xl md:text-6xl lg:text-8xl mb-8 mt-6 [text-shadow:_1px_1px_1px_rgba(20,20,20,2)]">
                     DibsDash
                 </h1>
                 <h3 className="font-rubik font-bold text-base sm:text-xl md:text-2xl mb-4"> 
                     Coordinate items for your party or potluck with friends!
                 </h3>
-                <p className="font-rubik text-md sm:text-lg md:text-xl text-gray-600 mb-6">
+                <p className="font-rubik text-md sm:text-lg md:text-xl text-gray-600 mb-8">
                     No accounts. No downloads. Ad-Free. For Free.
                 </p>
                 <button onClick={() => router.push('/create')} className="custom-button">
