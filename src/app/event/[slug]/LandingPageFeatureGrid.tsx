@@ -14,7 +14,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, step }) =
           Step {step}
         </span>
       </div>
-      <div className="flex-1 flex flex-col justify-center">
+      <div className="flex-1 flex flex-col justify-start mt-2">
         <h3 className="font-rubik text-xl font-bold text-gray-800 mb-3">
           {title}
         </h3>
@@ -30,12 +30,12 @@ export default function FeatureGrid() {
   const features = [
     {
       title: "Create Event",
-      description: "Set up your event in seconds. Edit anything as you go!",
+      description: "Set up your event in seconds.",
       step: 1
     },
     {
       title: "Share Link",
-      description: "Share your event URL with friends. Everyone has editing access.",
+      description: "Share your event URL with friends. Anyone with access can edit.",
       step: 2
     },
     {
@@ -45,20 +45,27 @@ export default function FeatureGrid() {
     },
     {
       title: "Claim Items",
-      description: "Call dibs! You can claim your added item and ones added by your friends.",
+      description: "Claim ones added by you or friends.",
       step: 4
-    }
+    },
+    {
+      title: "Modify",
+      description: "Edit items, who's claiming what, and any event info.",
+      step: 5
+    },
   ];
 
   return (
-    <div className="w-full max-w-md lg:max-w-2xl mx-auto py-12">
-      <h2 className="font-rubik text-3xl md:text-4xl lg:text-5xl font-bold text-center mt-6 mb-8">
+    // <div className="w-full max-w-md lg:max-w-2xl mx-auto py-12">
+    <div className="w-full max-w-4xl mx-auto py-12">
+      <h2 className="font-rubik text-3xl md:text-4xl lg:text-5xl font-bold text-center mt-6 mb-6">
         How It Works
       </h2>
-      <h3 className="font-rubik text-md sm:text-lg md:text-xl text-gray-500 w-full text-center mb-6">
-        DibsDash is a simple web app to coordinate and track event items with friends.
+      <h3 className="font-rubik text-md sm:text-lg md:text-xl text-gray-500 w-full text-center mb-8">
+        DibsDash is a simple web app to coordinate and track what to bring with friends. <br />
+        No more spreadsheets or chaotic group chats to coordinate food, drinks, decor, etc. <br />
       </h3>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 px-4">
         {features.map((feature, index) => (
           <FeatureCard
             key={index}
