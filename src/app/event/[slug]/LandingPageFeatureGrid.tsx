@@ -56,8 +56,7 @@ export default function FeatureGrid() {
   ];
 
   return (
-    // <div className="w-full max-w-md lg:max-w-2xl mx-auto py-12">
-    <div className="w-full max-w-4xl mx-auto py-12">
+    <div className="w-full max-w-4xl mx-auto py-12 px-4">
       <h2 className="font-rubik text-3xl md:text-4xl lg:text-5xl font-bold text-center mt-6 mb-6">
         How It Works
       </h2>
