@@ -6,25 +6,26 @@ import { customAlphabet } from 'nanoid';      // NanoID package is for productio
 // Generate unique URL slug upon creation of an event
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');   // custom alphanumeric URL generation, 2nd param is char length of slug URL
 // Make lists of fun words to use for slug URL generation
-const firstWords = ['cringey', 'vibey', 'nonchalant', 'saucy', 'chill', 'goofy', 'swaggy', 'explosive', 'performative', 'auraful', 'super', 'demure', 'rowdy', 'fire', 'sweet', 'salty'];
-const secondWords = ['grizzly', 'cat', 'chimp', 'parrot', 'puppy', 'husky', 'shiba', 'sloth', 'dragon', 'tortoise', 'tiger', 'eagle', 'wolf', 'armadillo', 'gorilla'];
+const firstWords = ['cringey', 'vibey', 'nonchalant', 'saucy', 'chill', 'goofy', 'swaggy', 'explosive', 'performative', 'auraful', 'super', 'demure', 'rowdy', 'fire', 'sweet'];
+const secondWords = ['grizzly', 'cat', 'chimp', 'parrot', 'puppy', 'rabbit', 'shiba', 'sloth', 'dragon', 'tortoise', 'tiger', 'eagle', 'wolf', 'armadillo', 'gorilla'];
 // For slug URL concatenation:
 const firstWord = firstWords[Math.floor(Math.random() * firstWords.length)];
 const secondWord = secondWords[Math.floor(Math.random() * secondWords.length)];
 
 function generateSlug(): string {
   // Return concatenated URL slug for event's main link
-  const unique = nanoid(15);
-  return `${firstWord}-${secondWord}-${unique}`  // e.g. "happy-chimp-a3X9h..."
+  const unique = nanoid(4);
+  return `${firstWord}-${secondWord}-${unique}`  // e.g. "happy-chimp-a3X9"
 }
 
 // Brandon's TODO: (AFTER MVP in production?) - For a given event, match first two generated words for
 //                 main URL slug name match w/ HOST URL slug (e.g. "event/vibey-cat..." for both URLs). 
-//                 Reason: for consistency.
+//                 Reason: for consistency perhaps?
 function generateEditCode(): string {
-  const secureUnique = nanoid(20)    // Longer slug = more secure for host event-editing access
+  const secureUnique = nanoid(6)
   // Return concatenated URL slug for event-host editing link
-  return `${firstWord}-${secondWord}-${secureUnique}`
+  // return `${firstWord}-${secondWord}-${secureUnique}`
+  return `${secureUnique}`
 }
 
 
