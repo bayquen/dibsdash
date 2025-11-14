@@ -50,7 +50,7 @@ export default function FeatureGrid() {
     },
     {
       title: "Modify",
-      description: "Edit anything any time. Anyone with your link can do so.",
+      description: "Edit anything, any time. Anyone with your link can do so.",
       step: 5
     },
   ];
