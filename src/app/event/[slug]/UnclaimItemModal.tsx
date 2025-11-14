@@ -23,7 +23,7 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
         return () => setMounted(false)
     }, [])
 
-    // Disable scrolling when this modal is open
+    // Disable scrolling on main page (scroll-lock) when this modal is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';

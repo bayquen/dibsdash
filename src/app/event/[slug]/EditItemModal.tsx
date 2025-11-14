@@ -57,15 +57,26 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         }
     }, [isOpen, item])
 
-    // TEST - 11/14/25: UI modal bug fix
+    // TEST - 11/14/25: UI modal bug fix 
     useEffect(() => {
         setMounted(true)
         return () => setMounted(false)
     }, [])
     
+    // Scroll-lock main page when this modal opens
+    // Updated - 11/14/25: Integrated with react-dom portal for cleaner UI on mobile view
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
+        if (isOpen && mounted) {
+            // Fix - 11/14/25: Small delay ensures react-dom portal is fully rendered before locking scroll for smoother UX
+            const timer = setTimeout(() => {
+                document.body.style.overflow = 'hidden';
+            }, 0);
+
+            return () => {
+                // Clearing the timeout prevents any memory leak if the modal closes before timeout activates
+                clearTimeout(timer);
+                document.body.style.overflow = 'unset';
+            }; 
         } else {
             document.body.style.overflow = 'unset';
         }
