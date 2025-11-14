@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 
 interface UnclaimItemModalProps {
@@ -12,7 +13,15 @@ interface UnclaimItemModalProps {
 
 export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isOpen, onClose }: UnclaimItemModalProps) {
     const router = useRouter()
-    const [loading, setLoading] = useState(false) 
+    const [loading, setLoading] = useState(false)
+    // TEST - 11/14/25: UI modal mobile bug fix; a State required for Next.js server-side rendering (prevents hydration mismatches)
+    const [mounted, setMounted] = useState(false)
+
+    // TEST - 11/14/25: UI modal bug fix
+    useEffect(() => {
+        setMounted(true)
+        return () => setMounted(false)
+    }, [])
 
     // Disable scrolling when this modal is open
     useEffect(() => {
@@ -51,9 +60,10 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
         }  
     }
 
-    if (!isOpen) return null
+    // TEST: UI mobile bug fix - 11/14/25
+    if (!isOpen || !mounted) return null
 
-    return (
+    return createPortal(
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg max-w-md w-full p-6">
                 <h2 className="text-xl font-bold mb-4 text-900">
@@ -87,6 +97,9 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
                     </button>
                 </div>
             </div>
-        </div>
+        </div>,
+        // TEST - 11/14/25: UI mobile bug fix; wrapping return JSX in `createPortal` function and document.body 
+        //                  interface merely changes where the modal itself gets rendered in the DOM.
+        document.body
     )
 }
