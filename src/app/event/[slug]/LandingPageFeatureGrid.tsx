@@ -35,7 +35,7 @@ export default function FeatureGrid() {
     },
     {
       title: "Share Link",
-      description: "Share your event URL with friends. Anyone with access can edit.",
+      description: "Start coordinating by sharing your event URL with friends.",
       step: 2
     },
     {
@@ -45,12 +45,12 @@ export default function FeatureGrid() {
     },
     {
       title: "Claim Items",
-      description: "Claim ones added by you or friends.",
+      description: "Claim any items by adding your name & remove claims as needed.",
       step: 4
     },
     {
       title: "Modify",
-      description: "Edit items, who's claiming what, and any event info.",
+      description: "Edit anything any time. Anyone with your link can do so. (Admin access coming soon)",
       step: 5
     },
   ];
@@ -61,8 +61,8 @@ export default function FeatureGrid() {
         How It Works
       </h2>
       <h3 className="font-rubik text-md sm:text-lg md:text-xl text-gray-500 w-full text-center mb-8">
-        DibsDash is a simple web app to coordinate and track what to bring with friends. <br />
-        No more spreadsheets or chaotic group chats to coordinate food, drinks, decor, etc. <br />
+        DibsDash is a minimalist app to coordinate what to bring to your gathering. <br />
+        Include items like food, drinks, decor & more. <br />
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 px-4">
         {features.map((feature, index) => (
