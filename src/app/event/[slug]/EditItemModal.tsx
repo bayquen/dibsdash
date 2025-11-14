@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 // DRY principle: Used a constant here to avoid duplication of categories
 // between Item modals (i.e. adding and editing)
@@ -21,6 +22,8 @@ interface EditItemModalProps {
 export default function EditItemModal({ item, isOpen, onClose }: EditItemModalProps) {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
+    // TEST - 11/14/25: UI modal mobile bug fix; a State required for Next.js server-side rendering (prevents hydration mismatches)
+    const [mounted, setMounted] = useState(false)
     const [formData, setFormData] = useState({
         name: item.name,
         category: item.category,
@@ -54,6 +57,12 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         }
     }, [isOpen, item])
 
+    // TEST - 11/14/25: UI modal bug fix
+    useEffect(() => {
+        setMounted(true)
+        return () => setMounted(false)
+    }, [])
+    
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -120,9 +129,10 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
     }
 
     // Don't render anything if modal is closed
-    if (!isOpen) return null
+    // TEST: UI mobile bug fix - 11/14/25
+    if (!isOpen || !mounted) return null
     
-    return (
+    return createPortal(
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg w-full max-w-sm sm:max-w-md lg:max-w-lg max-h-[90vh] overflow-y-auto p-4 sm:p-6 m-4">
                 <h2 className="text-2xl font-bold mb-4">Edit Item</h2>
@@ -261,6 +271,8 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                 </form>
                 
             </div>
-        </div>
+        </div>,
+
+        document.body
     )
 }
