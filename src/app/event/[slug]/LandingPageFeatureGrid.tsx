@@ -9,7 +9,7 @@ interface FeatureCardProps {
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, step }) => {
   return (
     <div className="bg-white rounded-lg p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 min-h-48 flex flex-col justify-between">
-      <div className="justify-end">
+      <div className="flex justify-end">
         <span className="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
           Step {step}
         </span>
@@ -50,7 +50,7 @@ export default function FeatureGrid() {
     },
     {
       title: "Modify",
-      description: "Edit anything any time. Anyone with your link can do so. (Admin access coming soon)",
+      description: "Edit anything any time. Anyone with your link can do so.",
       step: 5
     },
   ];
