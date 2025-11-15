@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 
 interface DeleteItemModalProps {
@@ -12,11 +13,28 @@ interface DeleteItemModalProps {
 export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: DeleteItemModalProps) {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
+    // TEST - 11/14/25: UI modal mobile bug fix; a State required for Next.js server-side rendering (prevents hydration mismatches)
+    const [mounted, setMounted] = useState(false)
+
+    // TEST - 11/14/25: UI modal bug fix
+    useEffect(() => {
+        setMounted(true)
+        return () => setMounted(false)
+    }, [])
 
     // Disable scrolling when this modal is open
+    // Updated - 11/14/25: Integrated with react-dom portal for cleaner UI on mobile view
     useEffect(() => {
-        if (isOpen) {
+        if (isOpen && mounted) {
+            const timer = setTimeout(() => {
             document.body.style.overflow = 'hidden';
+            }, 0);
+
+            return () => {
+                // Clearing the timeout prevents any memory leak if the modal closes before timeout activates
+                clearTimeout(timer);
+                document.body.style.overflow = 'unset';
+            };
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -25,7 +43,7 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, [isOpen]);
+    }, [isOpen, mounted]);
 
     const handleDelete = async () => {
         setLoading(true)
