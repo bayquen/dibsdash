@@ -68,7 +68,7 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
 
     if (!isOpen) return null
 
-    return (
+    return createPortal(
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg max-w-md w-full p-6">
                 <h2 className="text-xl font-bold mb-4 text-black-900">Delete Item</h2>
@@ -104,6 +104,9 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
                     </button>
                 </div>
             </div>
-        </div>
+        </div>,
+        // TEST - 11/14/25: UI mobile bug fix; wrapping return JSX in `createPortal` function and document.body 
+        //                  interface merely changes where the modal itself gets rendered in the DOM.
+        document.body
     )
 }
