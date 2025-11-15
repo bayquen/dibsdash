@@ -85,7 +85,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, [isOpen]);
+    }, [isOpen, mounted]);
 
     // Handle item category dropdown changes
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

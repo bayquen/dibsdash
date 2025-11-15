@@ -24,9 +24,18 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
     }, [])
 
     // Disable scrolling on main page (scroll-lock) when this modal is open
+    // Updated - 11/14/25: Integrated with react-dom portal for cleaner UI on mobile view
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
+        if (isOpen && mounted) {
+            const timer = setTimeout(() => {
+                document.body.style.overflow = 'hidden';
+            }, 0);
+
+            return () => {
+                // Clearing the timeout prevents any memory leak if the modal closes before timeout activates
+                clearTimeout(timer);
+                document.body.style.overflow = 'unset';
+            };
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -35,7 +44,7 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, [isOpen]);
+    }, [isOpen, mounted]);
 
     const handleUnclaim = async () => {
         setLoading(true)
