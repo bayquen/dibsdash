@@ -39,27 +39,6 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
         }
     }
 
-    // const handleUnclaim = async () => {
-    //     if (!confirm(`Set "${itemName}" as unclaimed?`)) return
-
-    //     setLoading(true)
-    //     try {
-    //         const response = await fetch(`/api/items/${itemId}`, {
-    //             method: 'PATCH',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({ claimed_by: null })
-    //         })
-
-    //         if (response.ok) {
-    //             router.refresh()
-    //         }
-    //     } catch (error) {
-    //         console.error('Error unclaiming item:', error)
-    //     } finally {
-    //         setLoading(false)
-    //     }
-    // }
-
     if (currentClaimer) {
         return (
             <>
@@ -90,10 +69,10 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleClaim()}
-                    placeholder="Name of who's claiming item"
-                    autoFocus
+                    placeholder="Your name"
+                    // autoFocus
                     maxLength={35}
-                    className="min-h-[44px] px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="min-h-[44px] px-3 py-2 text-base border-2 border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
                 <button
                     onClick={handleClaim}
