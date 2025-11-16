@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter } from 'next/navigation';
 
 interface EditEventModalProps {
@@ -11,6 +12,8 @@ interface EditEventModalProps {
 export default function EditEventModal({ event, isOpen, onClose }: EditEventModalProps) {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
+    // TEST - 11/15/25: UI modal mobile bug fix; a State required for Next.js server-side rendering (prevents hydration mismatches)
+    const [mounted, setMounted] = useState(false)
     const [formData, setFormData] = useState( {
         name: event.name || '',
         description: event.description || '',
@@ -19,10 +22,24 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
         location: event.location || ''
     })
 
-    // Refresh state if user cancels editing changes
+    // TEST - 11/15/25: UI modal bug fix
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
+        setMounted(true)
+        return () => setMounted(false)
+    }, [])
+
+    // Refresh state if user cancels editing changes (scroll-lock prevention)
+    // Updated 11/15/25 for UI mobile bug fix;
+    useEffect(() => {
+        if (isOpen && mounted) {
+            const timer = setTimeout(() => {
+                document.body.style.overflow = 'hidden';
+            }, 0);
+
+            return () => {
+                clearTimeout(timer);
+                document.body.style.overflow = 'unset';
+            };    
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -31,7 +48,7 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, [isOpen]);
+    }, [isOpen, mounted]);
 
     useEffect(() => {
         if (isOpen) {
@@ -78,9 +95,9 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
         })
     }
     
-    if (!isOpen) return null
+    if (!isOpen || !mounted) return null
 
-    return (
+    return createPortal(
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg w-full max-w-sm sm:max-w-md lg:max-w-lg max-h-[90vh] overflow-y-auto p-4 sm:p-6 m-4">
                 <h2 className="text-2xl text-center font-bold mb-1">Edit Event Details</h2>
@@ -182,6 +199,8 @@ export default function EditEventModal({ event, isOpen, onClose }: EditEventModa
                     
                 </form>
             </div>
-        </div>
+        </div>,
+
+        document.body
     )
 }
