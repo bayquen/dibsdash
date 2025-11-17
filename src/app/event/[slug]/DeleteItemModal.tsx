@@ -71,34 +71,31 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
     return createPortal(
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg max-w-md w-full p-6">
-                <h2 className="text-xl font-bold mb-4 text-black-900">Delete Item</h2>
-                <p className="text-gray-700 mb-2">
-                    Are you sure you want to <span className="text-red-500">delete</span> this event item?
-                </p>
-                <p className="text-lg font-semibold break-words text-gray-900 mb-4">
+                <h2 className="text-xl font-bold mb-4 text-black-900">Are you sure you want to <span className="text-red-500">delete</span> this item?</h2>
+                <h3 className="text-xl font-semibold break-words text-gray-900 mb-4 text-center">
                     "{itemName}"
+                </h3>
+
+                <p className="text-md text-gray-600 mb-6">
+                    <span className="text-blue-600">Note:</span>  Make sure to ask permission from the item's claimer or event host(s)!
                 </p>
 
-                <p className="text-sm text-gray-600 mb-6">
-                    <span className="text-blue-600">Note:</span> Make sure to ask permission from the item's claimer or host(s)!
-                </p>
-
-                <p className="text-sm text-red-600 mb-2">
+                <p className="text-md text-red-600 mb-2">
                     This action cannot be undone.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col sm:flex-row gap-5">
                     <button
                         onClick={onClose}
                         disabled={loading}
-                        className="w-full sm:flex-1 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
+                        className="w-full sm:flex-1 px-5 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleDelete}
                         disabled={loading}
-                        className="w-full sm:flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full sm:flex-1 px-5 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {loading ? 'Deleting...' : 'Delete Item'}
                     </button>
