@@ -26,7 +26,7 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                 {/* Item Name Column */}
                 <td className="px-4 py-3 align-top max-w-xs">
                     <div className="flex items-center gap-2 min-w-0">
-                        <span className="font-medium line-clamp-2 w-full max-w-[200px] break-words">{item.name}</span>
+                        <span className="font-medium line-clamp-2 w-full max-w-[150px] break-words">{item.name}</span>
                         {/* Show icon button if item notes exist */}
                         {item.notes && (
                             <button

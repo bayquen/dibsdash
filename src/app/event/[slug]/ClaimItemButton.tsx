@@ -45,9 +45,9 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
                 <button
                     onClick={() => setShowUnclaimModal(true)}
                     disabled={loading}
-                    className="min-h-[44px] px-4 py-2 bg-green-100 text-green-800 border border-green-200 rounded-lg text-sm font-medium hover:bg-green-200 active:scale-95 transition-all disabled:opacity-50 truncate max-w-xs"
+                    className="w-fit px-4 py-2 min-h-[44px] max-h-[50px] max-w-[200px] overflow-hidden truncate bg-green-100 text-green-800 border border-green-200 rounded-lg text-sm font-medium hover:bg-green-200 active:scale-95 transition-all disabled:opacity-50 text-center"
                 >
-                {currentClaimer} ✓ 
+                ✓ {currentClaimer} 
                 </button>
 
                 <UnclaimItemModal
@@ -97,7 +97,7 @@ export default function ClaimItemButton({ itemId, itemName, currentClaimer }: Cl
     return (
         <button
             onClick={() => setShowInput(true)}
-            className="min-h-[44px] min-w-[44px] px-3 py-2 bg-blue-600 text-white border border-blue-700 rounded-lg text-sm font-medium hover:bg-blue-700 active:scale-95 transition-all disabled:opacity-50"
+            className="w-fit min-h-[44px] min-w-[44px] px-3 py-2 bg-blue-600 text-white border border-blue-700 rounded-lg text-sm font-medium hover:bg-blue-700 active:scale-95 transition-all disabled:opacity-50"
         >
             Claim this item
         </button>
