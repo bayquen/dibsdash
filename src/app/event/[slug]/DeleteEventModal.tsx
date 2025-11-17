@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface DeleteEventModalProps {
@@ -14,6 +14,13 @@ export default function DeleteEventModal({ eventSlug, isOpen, onClose }: DeleteE
     const [loading, setLoading] = useState(false)
 
     const canDelete = confirmText === 'DELETE THIS EVENT'    // User must type phrase as is (in uppercase) to delete.
+
+    // Reset the confirmText input when modal opens/closes
+    useEffect(() => {
+        if (!isOpen) {
+            setConfirmText('')
+        }
+    }, [isOpen])
 
     const handleDelete = async () => {
         if (!canDelete) return
@@ -39,16 +46,15 @@ export default function DeleteEventModal({ eventSlug, isOpen, onClose }: DeleteE
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg max-w-md w-full p-6">
-                <h2 className="text-xl font-bold mb-4">Delete Event</h2>
-                <p className="text-red-600 mb-4">
-                    Warning: This will permanently delete this event, along with its URL and items
+                <h2 className="text-xl font-bold mb-4">Delete Event?</h2>
+                <p className="mb-1 text-gray-700">
+                    <span className="text-red-600 font-bold mb-4">Warning:</span> This will permanently delete the event, along with its URL and items. <br />
+                </p>
+                <p className="mb-5 text-gray-700 ">
+                    If you're not this event's host, please don't delete without asking permission first.
                 </p>
 
-                <p className="text-sm text-gray-600 mb-6">
-                    <span className="text-blue-600">Note:</span> Please don't delete without an event host's consent!
-                </p>
-
-                <p className="text-sm text-gray-600 mb-3">
+                <p className="text-sm mb-3">
                     Type <span className="font-bold">"DELETE THIS EVENT"</span> to confirm:
                 </p>
 

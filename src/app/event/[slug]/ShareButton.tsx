@@ -23,7 +23,7 @@ export default function ShareButton({ url }: ShareButtonProps) {
       onClick={handleCopy}
       className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm font-medium active:scale-95 transition-all"
     >
-      {copied ? 'Copied!' : 'Copy'}
+      {copied ? 'Link Copied!' : 'Copy'}
     </button>
   )
 }

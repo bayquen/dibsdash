@@ -53,8 +53,8 @@ export default function CreateEventPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-4">
-      <div className="max-w-sm mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-4">Create Your Event</h1>
+      <div className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto">
+        <h1 className="text-2xl sm:text-xl lg:text-3xl font-bold text-center mb-4">Create Your Event</h1>
         
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-6 pt-5 pb-6 mb-3">
           <div className="mb-4">
