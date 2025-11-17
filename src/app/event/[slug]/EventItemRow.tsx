@@ -26,15 +26,15 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                 {/* Item Name Column */}
                 <td className="px-4 py-3 align-top max-w-xs">
                     <div className="flex items-center gap-2 min-w-0">
-                        <span className="font-medium truncate">{item.name}</span>
+                        <span className="font-medium line-clamp-2 w-full max-w-[200px] break-words">{item.name}</span>
                         {/* Show icon button if item notes exist */}
                         {item.notes && (
                             <button
                                 onClick={() => setNotesExpanded(!notesExpanded)}
-                                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-blue-600 hover:bg-blue-50 rounded-lg text-base flex-shrink-0 active:scale-95 transition-all"
+                                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-2xl text-blue-600 hover:bg-blue-50 rounded-lg flex-shrink-0 active:scale-95 transition-all"
                                 title="Click to view notes"
                             >
-                                ⓘ Notes
+                                ⓘ
                             </button>
                         )}
                     </div>
