@@ -40,6 +40,21 @@ export default function EventItemRow({ item }: EventItemRowProps) {
                     </div>
                 </td>
                 
+                {/* TEST - 11/17/25: Moving the Item Notes button for cleaner UI
+                <td>
+                    <div className="flex items-center gap-2 min-w-0 max-w-[12px]">
+                        {item.notes && (
+                            <button
+                                onClick={() => setNotesExpanded(!notesExpanded)}
+                                className="min-h-[44px] min-w-[44px] flex items-center justify-center text-2xl text-blue-600 hover:bg-blue-50 rounded-lg flex-shrink-0 active:scale-95 transition-all"
+                                title="Click to view notes"
+                            >
+                                ⓘ
+                            </button>
+                        )}
+                    </div>
+                </td> */}
+                
                 {/* Quantity Column */}
                 <td className="px-4 py-3 text-center align-top">
                     {item.quantity > 1 ? `${item.quantity}` : '1'}

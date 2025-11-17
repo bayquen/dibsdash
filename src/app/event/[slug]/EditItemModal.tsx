@@ -146,7 +146,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
     return createPortal(
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg w-full max-w-sm sm:max-w-md lg:max-w-lg max-h-[90vh] overflow-y-auto p-4 sm:p-6 m-4">
-                <h2 className="text-2xl font-bold mb-4">Edit Item</h2>
+                <h2 className="text-2xl font-bold mb-4 text-center">Edit Item</h2>
 
                 <form onSubmit={handleSubmit}>
                     {/* Item Name */}
@@ -216,6 +216,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                         <input
                             type="number"
                             min="1"
+                            max="100000000"
                             value={formData.quantity}
                             onChange={(e) => setFormData({...formData, quantity: e.target.value})}
                             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -235,13 +236,13 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                             placeholder="(Optional)"
                             maxLength={35}
                         />
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="px-1 text-sm text-gray-500">
                             {formData.claimed_by.length}/35 characters
                         </p>
                     </div>
                     
                     {/* Item Notes */}
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">
                             Notes
                         </label>
@@ -253,7 +254,7 @@ export default function EditItemModal({ item, isOpen, onClose }: EditItemModalPr
                             placeholder="Any notes or details for this item..."
                             maxLength={300}
                         />
-                        <p>
+                        <p className="px-1 text-sm text-gray-500">
                             {formData.notes.length}/300 characters
                         </p>
                     </div>
