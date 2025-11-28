@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import NavigationBar from './components/NavigationBar';
 
 export const metadata: Metadata = {
   title: 'DibsDash: Coordinate food and drinks with friends for your next gathering!',
@@ -21,7 +22,10 @@ export default function RootLayout({
   }) {
     return (
       <html lang="en">
-        <body>{children}</body>
+        <body>
+          <NavigationBar />
+          {children}
+        </body>
       </html>
     )
   }
