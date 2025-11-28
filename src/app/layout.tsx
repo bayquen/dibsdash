@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'DibsDash - Coordinate items!',
-  description: 'Coordinate your party and potluck items better than spreadsheets!',
+  title: 'DibsDash: Coordinate food and drinks with friends for your next gathering!',
+  description: 'A simple party and potluck sign-up sheets app to coordinate food and drinks with others for free.',
 }
 
 // Next 15.x requires separate import for the Viewport!
