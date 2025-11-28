@@ -18,7 +18,7 @@ export default function Home() {
                     No logins or downloads needed. Free and simple.
                 </p>
                 <button onClick={() => router.push('/create')} className="custom-button">
-                    <span className="custom-button-top">Create Your Event</span>
+                    <span className="custom-button-top">Create Event</span>
                 </button>
             </div>
 
