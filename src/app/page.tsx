@@ -12,7 +12,7 @@ export default function Home() {
                     DibsDash
                 </h1>
                 <h3 className="font-rubik font-bold text-base sm:text-xl md:text-2xl mb-4"> 
-                    Coordinate items for your party or potluck with friends!
+                    Coordinate food, drinks, and more with friends!
                 </h3>
                 <p className="font-rubik text-md sm:text-lg md:text-xl text-gray-600 mb-8">
                     No accounts. No downloads. Ad-Free. For Free.
