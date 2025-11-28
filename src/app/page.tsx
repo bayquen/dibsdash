@@ -15,7 +15,7 @@ export default function Home() {
                     Coordinate food and drinks with friends!
                 </h3>
                 <p className="font-rubik text-md sm:text-lg md:text-xl text-gray-600 mb-8">
-                    No accounts. No downloads. Ad-Free. For Free.
+                    No accounts. No downloads. 100% Free.
                 </p>
                 <button onClick={() => router.push('/create')} className="custom-button">
                     <span className="custom-button-top">Create Your Event</span>
