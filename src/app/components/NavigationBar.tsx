@@ -15,9 +15,8 @@ type NavigationBarProps = {
 };
 
 // Creates array of default items on right side of nav if no right-side config is provided!
-const defaultRightItems: NavItem[] = [
-    { type: 'link', href: '/create', label: '+ New Event'},
-];
+// (Placed no items as base default!)
+const defaultRightItems: NavItem[] = [];
 
 function renderItem(item: NavItem, key: string | number) {
     if (item.type === 'custom') return <span key={key}>{item.node}</span>;

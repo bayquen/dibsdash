@@ -1,5 +1,6 @@
 import { supabase } from '@/lib/supabase';
 import { notFound } from 'next/navigation';    // to show 404 page as needed
+import NavigationBar from '../../components/NavigationBar';
 import ShareButton from './ShareButton';
 import EventDate from './EventDate';
 import AddItemModal from './AddItemModal';
@@ -52,80 +53,83 @@ export default async function EventPage({ params }: PageProps) {
     }, {})
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8 px-4 overflow-x-hidden">
-            <div className="max-w-4xl mx-auto w-full">
-                {/* SECTION: Event Header (YAYY) */}
-                <div className= "bg-white rounded-lg shadow-lg p-6 mb-6">
-                    <h1 className="px-4 text-3xl font-bold mb-4">{event.name}</h1>
+        <>
+            <NavigationBar rightItems={[{ type: 'link', href: '/create', label: '+ New Event' }, ]}/>
+            <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8 px-4 overflow-x-hidden">
+                <div className="max-w-4xl mx-auto w-full">
+                    {/* SECTION: Event Header (YAYY) */}
+                    <div className= "bg-white rounded-lg shadow-lg p-6 mb-6">
+                        <h1 className="px-4 text-3xl font-bold mb-4">{event.name}</h1>
 
-                    {event.description && (
-                        <p className="px-4 mb-4 max-w-xl break-words"> <span className="font-bold">Description:</span> <br />{event.description}</p>
-                    )}
+                        {event.description && (
+                            <p className="px-4 mb-4 max-w-xl break-words"> <span className="font-bold">Description:</span> <br />{event.description}</p>
+                        )}
 
-                    <div className="space-y-2">
-                        <EventDate date={event.date} time={event.time} />
+                        <div className="space-y-2">
+                            <EventDate date={event.date} time={event.time} />
 
-                    {event.location && (
-                        <div className="px-4 flex-items-center">
-                            <span className="font-semibold mr-2">📍 </span>
-                            <span>{event.location}</span>
+                        {event.location && (
+                            <div className="px-4 flex-items-center">
+                                <span className="font-semibold mr-2">📍 </span>
+                                <span>{event.location}</span>
+                            </div>
+                        )}
                         </div>
-                    )}
+                        
+                        {/* <div className="flex-items-center mt-4">
+                            <p>
+                                Don't
+                            </p>
+                        </div> */}
+
+                        {/* SECTION: Share Link (YAYYY) */}
+                        <div className="mt-2 p-4">
+                            <p className="text-md max-w-md">
+                                <span className="text-red-500">For Event Hosts:</span>
+                            </p>
+                            <p className="text-md text-gray-700 max-w-2xl mb-2">
+                                Make sure to take note of your event's URL!
+                            </p>
+                            <p className="text-md font-semibold mb-2">Share this event:</p>
+                            <div className="flex items-center gap-2 max-w-xs">
+                                <input
+                                type="text"
+                                readOnly
+                                value={`${typeof window !== 'undefined' ? window.location.origin : ''}dibsdash.com/event/${event.url_slug}`}
+                                className="flex-1 px-3 py-2 bg-white border border-gray-300 rounded text-sm"
+                                />    
+                                <ShareButton url={`${process.env.NEXT_PUBLIC_APP_URL || 'https://dibsdash.com'}/event/${event.url_slug}`} />
+                            </div>
+                        </div>
+
+                        <div>
+                            {/* Button to open modal for editing event details hehe */}
+                            <EditEventButton event={event} />
+                        </div>
                     </div>
                     
-                    {/* <div className="flex-items-center mt-4">
-                        <p>
-                            Don't
-                        </p>
-                    </div> */}
-
-                    {/* SECTION: Share Link (YAYYY) */}
-                    <div className="mt-2 p-4">
-                        <p className="text-md max-w-md">
-                            <span className="text-red-500">For Event Hosts:</span>
-                        </p>
-                        <p className="text-md text-gray-700 max-w-2xl mb-2">
-                            Make sure to take note of your event's URL!
-                        </p>
-                        <p className="text-md font-semibold mb-2">Share this event:</p>
-                        <div className="flex items-center gap-2 max-w-xs">
-                            <input
-                            type="text"
-                            readOnly
-                            value={`${typeof window !== 'undefined' ? window.location.origin : ''}dibsdash.com/event/${event.url_slug}`}
-                            className="flex-1 px-3 py-2 bg-white border border-gray-300 rounded text-sm"
-                            />    
-                            <ShareButton url={`${process.env.NEXT_PUBLIC_APP_URL || 'https://dibsdash.com'}/event/${event.url_slug}`} />
+                    {/* SECTION: Items (YAYYY) - NOW WITH TABLE LAYOUT */}
+                    <div className="bg-white rounded-lg shadow-lg p-6">
+                        <div className="flex justify-between items-center mb-6">
+                            <h2 className="text-2xl font-bold text-gray-900">Items Needed</h2>
+                            <AddItemButton eventId={event.id} />
                         </div>
+                        
+                        {event.items.length === 0 ? (
+                            <div className="text-center py-12 text-gray-500">
+                                <p className="text-lg">No items added yet</p>
+                                <p className="text-sm mt-2">Be the first to add what&apos;s needed for this event!</p>
+                            </div>
+                        ) : (
+                            <EventItemsTable categorizedItems={categorizedItems} />
+                        )}
                     </div>
 
-                    <div>
-                        {/* Button to open modal for editing event details hehe */}
-                        <EditEventButton event={event} />
+                    <div className="mt-8 text-center">
+                        <DeleteEventButton eventSlug={event.url_slug} />
                     </div>
-                </div>
-                
-                {/* SECTION: Items (YAYYY) - NOW WITH TABLE LAYOUT */}
-                <div className="bg-white rounded-lg shadow-lg p-6">
-                    <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-2xl font-bold text-gray-900">Items Needed</h2>
-                        <AddItemButton eventId={event.id} />
-                    </div>
-                    
-                    {event.items.length === 0 ? (
-                        <div className="text-center py-12 text-gray-500">
-                            <p className="text-lg">No items added yet</p>
-                            <p className="text-sm mt-2">Be the first to add what&apos;s needed for this event!</p>
-                        </div>
-                    ) : (
-                        <EventItemsTable categorizedItems={categorizedItems} />
-                    )}
-                </div>
-
-                <div className="mt-8 text-center">
-                    <DeleteEventButton eventSlug={event.url_slug} />
                 </div>
             </div>
-        </div>
+        </>
     )
 }
