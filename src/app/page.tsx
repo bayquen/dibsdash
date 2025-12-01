@@ -13,12 +13,12 @@ export default function Home() {
 
             <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
                 <div className="max-w-4xl mx-auto px-4 py-16 mb-20 sm:py-24 text-center">
-                    <h1 className="font-bold text-blue-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-                        Coordinate
+                    <h1 className="font-bold text-blue-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl flex justify-center items-baseline">
+                        Coordinate party
                         <RotatingText
-                            texts={[' food', ' drinks', ' supplies', ' decor']}
-                            mainClassName="font-bold text-blue-600 text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
-                            staggerFrom={"last"}
+                            texts={['food', 'drinks', 'supplies', 'favors']}
+                            mainClassName="font-bold text-blue-600 justify-center px-4 py-0.5 flex overflow-hidden text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+                            staggerFrom={"first"}
                             initial={{ y: "100%" }}
                             animate={{ y: 0 }}
                             exit={{ y: "-120%" }}
@@ -26,12 +26,12 @@ export default function Home() {
                             splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
                             transition={{ type: "spring", damping: 30, stiffness: 400 }}
                             // auto=
-                            rotationInterval={2000}
+                            rotationInterval={2500}
                             />
-                        
+                         
                     </h1>
-                    <h1 className="font-bold text-blue-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-8">
-                    for your next party.
+                    <h1 className="font-bold text-blue-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl flex justify-center items-baseline mt-1 mb-8">
+                    with friends.
                     </h1>
                     <h3 className="font-rubik font-bold text-base sm:text-xl md:text-2xl mb-4"> 
                         No more messy spreadsheets or chaotic group chats.

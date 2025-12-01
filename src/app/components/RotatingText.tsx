@@ -106,11 +106,11 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       }));
     }, [texts, currentTextIndex, splitBy]);
 
-    // Compute max length so in-line text width stays constant and doesn't shift any words
-    const maxTextLength = useMemo(
-        () => texts.reduce((max, t) => Math.max(max, t.length), 0),
-        [texts]
-    );
+    // TEST (12-1-25): Compute max length so in-line text width stays constant and doesn't shift any words
+    // const maxTextLength = useMemo(
+    //     () => texts.reduce((max, t) => Math.max(max, t.length), 0),
+    //     [texts]
+    // );
 
     const getStaggerDelay = useCallback(
       (index: number, totalChars: number): number => {
@@ -188,7 +188,8 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
     return (
       <motion.span
         className={cn('inline-flex flex-wrap whitespace-pre-wrap relative', mainClassName)}
-        style={{ minWidth: `${maxTextLength}ch`, ...style }}
+        // TEST (12-1-25): Include max length so in-line text width stays constant and doesn't shift any words
+        // style={{ minWidth: `${maxTextLength}ch`, ...style }}
         {...rest}
         layout
         transition={transition}

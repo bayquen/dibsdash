@@ -60,10 +60,12 @@ export default function FeatureGrid() {
       <h2 className="font-rubik text-3xl md:text-4xl lg:text-5xl font-bold text-center mt-6 mb-6">
         How It Works
       </h2>
-      <h3 className="font-rubik text-md sm:text-lg md:text-xl text-gray-500 w-full text-center mb-8">
-        DibsDash is a minimalist app to coordinate what to bring to your gathering. <br />
-        Include items like food, drinks, decor & more. <br />
-      </h3>
+      <p className="font-rubik text-md sm:text-lg md:text-xl text-gray-500 w-full text-center mb-8">
+        Tired of messy group chats or confusing spreadsheets?<br /> 
+        DibsDash is a minimalist app to list and coordinate party items with friends.<br />
+        Works on mobile view so you can track items on the go!<br />
+      </p>
+
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 px-4">
         {features.map((feature, index) => (
           <FeatureCard
