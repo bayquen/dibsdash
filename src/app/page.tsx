@@ -33,10 +33,10 @@ export default function Home() {
                     <h1 className="font-bold text-blue-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl flex justify-center items-baseline mt-1 mb-8">
                     with friends.
                     </h1>
-                    <h3 className="font-rubik font-bold text-base sm:text-xl md:text-2xl mb-4"> 
+                    <h3 className="font-outfit font-bold text-base sm:text-xl md:text-2xl mb-4"> 
                         No more messy group chats or inconvenient spreadsheets.
                     </h3>
-                    <p className="font-rubik text-md sm:text-lg md:text-xl text-gray-600 mb-8">
+                    <p className="font-outfit text-md sm:text-lg md:text-xl text-gray-600 mb-8">
                         It's free and simple. No accounts needed.
                     </p>
                     <button onClick={() => router.push('/create')} className="custom-button">
