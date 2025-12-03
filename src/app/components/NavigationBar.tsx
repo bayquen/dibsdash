@@ -49,10 +49,12 @@ export default function NavigationBar({
     rightItems = defaultRightItems,
 }: NavigationBarProps) {
     return (
-        <nav className={`w-full overflow-x-auto px-6 py-4 flex items-center justify-between border-b border-gray-200 ${className}`}>
+        // <nav className={`w-full bg-[#FDF7E1] overflow-x-auto px-6 py-4 flex items-center justify-between border-b border-gray-300 ${className}`}>
+        <nav className={`w-full bg-gradient-to-r from-[#FBF6E3] to-[#FDEEB2] overflow-x-auto px-6 py-4 flex items-center justify-between border-b border-gray-300 ${className}`}>
             <div className="flex items-center gap-3">
                 <Link href="/" className="text-gray-700 hover:text-gray-900 font-rubik">
-                    <p className="fontdiner-swanky-regular text-blue-800 text-3xl sm:text-4xl [text-shadow:_1px_1px_1px_rgba(20,20,20,2)] ">
+                    {/* <p className="fontdiner-swanky-regular text-blue-700 text-3xl sm:text-4xl [text-shadow:_1px_1px_1px_rgba(20,20,20,2)] hover:[text-shadow:_1.5px_1.5px_2px_rgba(20,20,20,2)]"> */}
+                    <p className="fontdiner-swanky-regular text-blue-700 text-3xl sm:text-4xl hover:[text-shadow:_0.5px_0.5px_1px_rgba(20,20,20,2)]">
                         DibsDash
                     </p>
                 </Link>
