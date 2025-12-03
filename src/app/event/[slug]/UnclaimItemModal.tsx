@@ -79,7 +79,7 @@ export default function UnclaimItemModal({ itemId, itemName, currentClaimer, isO
                     Set this item as <span className="text-orange-600">unclaimed</span>?
                 </h2>
 
-                <p className="text-lg font-semibold text-gray-900 mb-3">
+                <p className="text-lg font-semibold break-words text-gray-900 mb-3">
                     "{itemName}"
                 </p>
                 <p className="text-md text-600 mb-3">

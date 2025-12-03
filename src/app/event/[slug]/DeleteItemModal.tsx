@@ -71,7 +71,7 @@ export default function DeleteItemModal({ itemId, itemName, isOpen, onClose }: D
     return createPortal(
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg max-w-md w-full p-6">
-                <h2 className="text-xl font-bold mb-4 text-black-900">Are you sure you want to <span className="text-red-500">delete</span> this item?</h2>
+                <h2 className="text-xl text-center font-semibold mb-4 text-black-900">Are you sure you want to <span className="text-red-500">delete</span> this item?</h2>
                 <h3 className="text-xl font-semibold break-words text-gray-900 mb-4 text-center">
                     "{itemName}"
                 </h3>
