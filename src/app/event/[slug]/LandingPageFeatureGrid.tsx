@@ -15,10 +15,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, step }) =
         </span>
       </div>
       <div className="flex-1 flex flex-col justify-start mt-2">
-        <h3 className="font-rubik text-xl font-bold text-gray-800 mb-3">
+        <h3 className="font-outfit text-xl font-bold text-gray-800 mb-3">
           {title}
         </h3>
-        <p className="font-rubik text-md text-gray-600">
+        <p className="font-outfit text-md text-gray-600">
           {description}
         </p>
       </div>
@@ -57,10 +57,10 @@ export default function FeatureGrid() {
 
   return (
     <div className="w-full max-w-4xl mx-auto py-12 px-4">
-      <h2 className="font-rubik text-3xl md:text-4xl lg:text-5xl font-bold text-center mt-6 mb-6">
+      <h2 className="font-outfit text-blue-800 text-3xl md:text-5xl lg:text-6xl font-bold text-center mt-6 mb-6">
         How It Works
       </h2>
-      <p className="font-rubik text-md sm:text-lg md:text-xl text-gray-500 w-full text-center mb-8">
+      <p className="font-outfit text-md sm:text-lg md:text-xl w-full text-center mb-8">
         Tired of messy group chats or confusing spreadsheets?<br /> 
         DibsDash is a minimalist app to list and coordinate party items with friends.<br />
         Works on mobile view so you can track items on the go!<br />
