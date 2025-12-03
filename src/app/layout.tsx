@@ -2,6 +2,14 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import NavigationBar from './components/NavigationBar';
 
+import { Outfit } from 'next/font/google';  // 'Outfit' Google Font import using Next
+
+const outfit_font = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'DibsDash: Coordinate food and drinks with friends for your next gathering!',
   description: 'A simple party and potluck sign-up sheets app to coordinate food and drinks with others for free.',
@@ -21,8 +29,8 @@ export default function RootLayout({
     children: React.ReactNode
   }) {
     return (
-      <html lang="en">
-        <body>
+      <html lang="en" className={outfit_font.variable}>
+        <body className="font-outfit">
           {/* <NavigationBar /> */}
           {children}
         </body>

@@ -10,8 +10,9 @@ module.exports = {
       fontFamily: {
         swanky: ['"Fontdiner Swanky"', 'serif'],
         rubik: ['Rubik', 'sans-serif'],
+        outfit: ['var(--font-outfit)', 'sans-serif'],
       },
     },
   },
   plugins: [],
-}
+};
