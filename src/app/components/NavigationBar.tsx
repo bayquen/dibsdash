@@ -32,13 +32,25 @@ function renderItem(item: NavItem, key: string | number) {
         );
     }
 
+    // Check if '.custom-button' CSS class is being used; 
+    // Need this part to use that class for a non-<button> component within nav bar
+    const isCustomButton = item.className?.includes('custom-button');
+
     return (
         <Link
             key={key}
             href={item.href}
-            className={`px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition ${item.className || ''}`}
+            className={
+                isCustomButton
+                ? `custom-button ${item.className || ''}`.trim()
+                : `px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition ${item.className || ''}`
+                }
         >
-            {item.label}
+            {isCustomButton ? (
+                <span className="custom-button-top px-3 py-1.5 text-sm">{item.label}</span>
+                ) : (
+                    item.label
+                )}
         </Link>
     );
 }

@@ -54,7 +54,7 @@ export default async function EventPage({ params }: PageProps) {
 
     return (
         <>
-            <NavigationBar rightItems={[{ type: 'link', href: '/create', label: '+ New Event' }, ]}/>
+            <NavigationBar rightItems={[{ type: 'link', href: '/create', label: '+ New Event', className: 'custom-button' }, ]}/>
             <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8 px-4 overflow-x-hidden">
                 <div className="max-w-4xl mx-auto w-full">
                     {/* SECTION: Event Header (YAYY) */}

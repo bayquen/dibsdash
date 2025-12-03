@@ -9,7 +9,7 @@ export default function Home() {
 
     return (
         <>
-            <NavigationBar rightItems={[{ type: 'link', href: '/create', label: '+ New Event' }, ]}/>
+            <NavigationBar rightItems={[{ type: 'link', href: '/create', label: '+ New Event', className: 'custom-button' }, ]}/>
 
             <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white">
                 <div className="max-w-4xl mx-auto px-4 py-16 mb-20 text-center">
