@@ -88,7 +88,7 @@ export default async function EventPage({ params }: PageProps) {
                                 <span className="text-red-500">For Event Hosts:</span>
                             </p>
                             <p className="text-md text-gray-700 max-w-2xl mb-2">
-                                Make sure to take note of your event's URL!
+                                Make sure to take note of your event's URL link!
                             </p>
                             <p className="text-md font-semibold mb-2">Share this event:</p>
                             <div className="flex items-center gap-2 max-w-xs">

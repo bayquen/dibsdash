@@ -45,7 +45,7 @@ export default function FeatureGrid() {
     },
     {
       title: "Claim Items",
-      description: "Claim any items by adding your name & remove claims as needed.",
+      description: "Claim any items by adding your name. Remove claims as needed.",
       step: 4
     },
     {
@@ -57,16 +57,16 @@ export default function FeatureGrid() {
 
   return (
     <div className="w-full max-w-4xl mx-auto py-12 px-4">
-      <h2 className="font-outfit text-blue-800 text-3xl md:text-5xl lg:text-6xl font-bold text-center mt-6 mb-6">
+      <h2 className="font-outfit text-blue-800 text-3xl md:text-5xl font-bold text-center mt-6 mb-4">
         How It Works
       </h2>
       <p className="w-full font-outfit text-md sm:text-lg md:text-xl text-center mb-8">
         Need to know who's bringing what food to your next party?<br />
-        Coordinating meals and drinks for your next potluck?<br />
+        Coordinating dishes and drinks with guests for a potluck?<br />
         Tired of Google Sheet sign-ups or messy group chats?<br />
         <br />
         <span className="text-blue-800 font-bold">DibsDash</span> is a minimalist app to list and coordinate party items with friends easily.<br /> 
-        Our site works great on mobile so you can track items on the go, anytime.<br />
+        Works on mobile view so you can add & track items on the go!<br />
       </p>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 px-4">

@@ -12,7 +12,7 @@ export default function Home() {
             <NavigationBar rightItems={[{ type: 'link', href: '/create', label: '+ New Event' }, ]}/>
 
             <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-                <div className="max-w-4xl mx-auto px-4 py-16 mb-20 sm:py-24 text-center">
+                <div className="max-w-4xl mx-auto px-4 py-16 mb-20 text-center">
                     <h1 className="font-bold text-blue-800 text-3xl sm:text-4xl md:text-5xl lg:text-6xl flex justify-center items-baseline">
                         Coordinate party
                         <RotatingText
@@ -37,7 +37,7 @@ export default function Home() {
                         No more messy group chats or inconvenient spreadsheets.
                     </h3>
                     <p className="font-outfit text-md sm:text-lg md:text-xl text-gray-600 mb-8">
-                        It's free and simple. No accounts needed.
+                        Simple and 100% free. No accounts needed.
                     </p>
                     <button onClick={() => router.push('/create')} className="custom-button">
                         <span className="custom-button-top">Create Event</span>
