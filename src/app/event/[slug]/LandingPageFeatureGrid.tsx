@@ -60,10 +60,13 @@ export default function FeatureGrid() {
       <h2 className="font-outfit text-blue-800 text-3xl md:text-5xl lg:text-6xl font-bold text-center mt-6 mb-6">
         How It Works
       </h2>
-      <p className="font-outfit text-md sm:text-lg md:text-xl w-full text-center mb-8">
-        Tired of messy group chats or confusing spreadsheets?<br /> 
-        DibsDash is a minimalist app to list and coordinate party items with friends.<br />
-        Works on mobile view so you can track items on the go!<br />
+      <p className="w-full font-outfit text-md sm:text-lg md:text-xl text-center mb-8">
+        Need to know who's bringing what food to your next party?<br />
+        Coordinating meals and drinks for your next potluck?<br />
+        Tired of Google Sheet sign-ups or messy group chats?<br />
+        <br />
+        <span className="text-blue-800 font-bold">DibsDash</span> is a minimalist app to list and coordinate party items with friends easily.<br /> 
+        Our site works great on mobile so you can track items on the go, anytime.<br />
       </p>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 px-4">

@@ -17,7 +17,7 @@ export default function Home() {
                         Coordinate party
                         <RotatingText
                             texts={['food', 'drinks', 'supplies', 'favors']}
-                            mainClassName="font-bold text-blue-600 justify-center px-4 py-0.5 flex overflow-hidden text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+                            mainClassName="font-bold text-blue-600 justify-center px-2 py-0.5 flex overflow-hidden text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
                             staggerFrom={"first"}
                             initial={{ y: "100%" }}
                             animate={{ y: 0 }}
@@ -34,7 +34,7 @@ export default function Home() {
                     with friends.
                     </h1>
                     <h3 className="font-rubik font-bold text-base sm:text-xl md:text-2xl mb-4"> 
-                        No more messy spreadsheets or chaotic group chats.
+                        No more messy group chats or inconvenient spreadsheets.
                     </h3>
                     <p className="font-rubik text-md sm:text-lg md:text-xl text-gray-600 mb-8">
                         It's free and simple. No accounts needed.
