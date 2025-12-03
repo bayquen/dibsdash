@@ -48,10 +48,11 @@ export default function EventItemsTable({ categorizedItems }: EventItemsTablePro
                                 <span className="text-lg font-semibold text-gray-800">
                                     {isCollapsed ? '▶' : '▼'} {category}
                                 </span>
-                                <span className="text-sm text-gray-600">
+                            </div>
+                                <span className="text-sm text-gray-600 ">
                                     ({totalCount} {totalCount === 1 ? 'item' : 'items'}, {claimedCount}/{totalCount} claimed)
                                 </span>
-                            </div>
+                            {/* </div> */}
                         </button>
 
                         {/* Category Table (hidden when collapsed) */}
